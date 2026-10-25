@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { ArqueWordmark } from "@/components/ArqueWordmark";
 import { Chevron, Reveal } from "@/components/site/primitives";
+import catalogoRender from "@/assets/enxoval/catalogo-render.png.asset.json";
 
 const TITLE = "Enxoval Arquê — pranchas da marca";
 const DESC = "O enxoval de marca da Arquê: 24 peças em seis grupos, com medida, sangria, material e arquivo de entrega em cada prancha.";
@@ -96,6 +97,26 @@ function EnxovalPage() {
             </Reveal>
           </div>
         </section>
+
+        <section aria-label="Render · Catálogo da marca" className="bg-surface-alt">
+          <div className="container-x pt-16 lg:pt-24">
+            <Reveal>
+              <div className="mb-6 flex items-baseline gap-6 border-b-2 border-carvao pb-3">
+                <p className="label-mono text-brand">R</p>
+                <h2 className="label-mono text-ink">Render · Catálogo da marca</h2>
+              </div>
+              <div className="border border-rule bg-surface">
+                <img
+                  src={catalogoRender.url}
+                  alt="Catálogo da marca Arquê: 22 peças do enxoval aplicadas como render — vestuário, acessórios, papelaria, tecnologia e brindes"
+                  loading="lazy"
+                  className="block w-full"
+                />
+              </div>
+            </Reveal>
+          </div>
+        </section>
+
 
         <div className="border-y border-rule bg-surface-alt">
           <div className="container-x flex flex-col gap-16 py-16 lg:gap-24 lg:py-24">
