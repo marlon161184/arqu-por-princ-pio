@@ -15,3 +15,4 @@
 - Serve the brand enxoval as self-contained static boards under `public/enxoval/`, embedded in `/enxoval` as 1760px iframes scaled to the column; never rebuild the boards as React.
 - Bind suite accent and palette specimens from typed data; all surrounding interface colors use Arquê tokens so suite colors do not become interface themes.
 - Declare natural-ratio portfolio images in typed suite data so image framing stays independent of suite-specific presentation conditions.
+- Keep the client-area concept in a standalone route with scoped CSS, typed fictional data and local React state; this isolates its phone presentation and interactions from the institutional site and static enxoval.
