@@ -13,7 +13,7 @@ export function ProductSuite({ suite }: { suite: Suite }) {
         <p className="measure mt-6 text-nevoa">{suite.description}</p>
       </div>
       {suite.images.map((image, index) => <figure key={image.src} className={index === 0 ? "suite-image-main min-w-0" : "suite-image-secondary min-w-0"}>
-        <img src={image.src} alt={image.alt} loading="lazy" decoding="async" className="aspect-[16/10] w-full border border-linha-escura object-contain" />
+        <img src={image.src} alt={image.alt} loading="lazy" decoding="async" className={`w-full border border-linha-escura ${image.naturalRatio ? "h-auto" : "aspect-[16/10] object-contain"}`} />
         <figcaption className="label-mono mt-3 text-nevoa">{image.caption}</figcaption>
       </figure>)}
     </div>

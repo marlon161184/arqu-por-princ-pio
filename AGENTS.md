@@ -13,3 +13,4 @@
 - Store uploaded portfolio media as Lovable Assets pointers in `src/assets/produtos/` to keep binaries off the repository.
 - Load web fonts through the TanStack root head, the project's HTML document owner; there is no index.html.
 - Bind suite accent and palette specimens from typed data; all surrounding interface colors use Arquê tokens so suite colors do not become interface themes.
+- Declare natural-ratio portfolio images in typed suite data so image framing stays independent of suite-specific presentation conditions.
