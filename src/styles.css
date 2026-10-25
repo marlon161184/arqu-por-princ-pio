@@ -255,7 +255,7 @@
   .architecture-cell:first-child { padding-left: 0; }
   .architecture-cell + .architecture-cell { border-left: 1px solid var(--linha-escura); }
   .suite-grammar { grid-template-columns: minmax(0, 7fr) minmax(0, 4fr); column-gap: 48px; }
-  .palette-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .palette-grid { grid-template-columns: repeat(auto-fit, minmax(64px, 1fr)); }
   .product-trigger { grid-template-columns: 40px minmax(0, 5fr) minmax(0, 2fr) minmax(0, 4fr); gap: 24px; padding: 32px 40px 32px 24px; align-items: start; }
   .product-name { font-size: 48px; }
   .product-number { grid-row: auto; }
