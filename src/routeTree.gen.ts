@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as EnxovalRouteImport } from './routes/enxoval'
+import { Route as ConceitoAreaDoClienteRouteImport } from './routes/conceito.area-do-cliente'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const EnxovalRoute = EnxovalRouteImport.update({
   path: '/enxoval',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConceitoAreaDoClienteRoute = ConceitoAreaDoClienteRouteImport.update({
+  id: '/conceito/area-do-cliente',
+  path: '/conceito/area-do-cliente',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/enxoval': typeof EnxovalRoute
+  '/conceito/area-do-cliente': typeof ConceitoAreaDoClienteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/enxoval': typeof EnxovalRoute
+  '/conceito/area-do-cliente': typeof ConceitoAreaDoClienteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/enxoval': typeof EnxovalRoute
+  '/conceito/area-do-cliente': typeof ConceitoAreaDoClienteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/enxoval'
+  fullPaths: '/' | '/enxoval' | '/conceito/area-do-cliente'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/enxoval'
-  id: '__root__' | '/' | '/enxoval'
+  to: '/' | '/enxoval' | '/conceito/area-do-cliente'
+  id: '__root__' | '/' | '/enxoval' | '/conceito/area-do-cliente'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   EnxovalRoute: typeof EnxovalRoute
+  ConceitoAreaDoClienteRoute: typeof ConceitoAreaDoClienteRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof EnxovalRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/conceito/area-do-cliente': {
+      id: '/conceito/area-do-cliente'
+      path: '/conceito/area-do-cliente'
+      fullPath: '/conceito/area-do-cliente'
+      preLoaderRoute: typeof ConceitoAreaDoClienteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   EnxovalRoute: EnxovalRoute,
+  ConceitoAreaDoClienteRoute: ConceitoAreaDoClienteRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
