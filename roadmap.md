@@ -14,6 +14,6 @@
 - [x] Link discreto "Enxoval" no rodapé do site e verificação desktop/mobile.
 
 # Conceito · Área do cliente
-- [ ] Criar página própria e protótipo local com cinco telas e filtros.
-- [ ] Adicionar somente o link discreto no rodapé institucional.
-- [ ] Verificar navegação, dados fictícios, filtros e celular em desktop/mobile.
+- [x] Criar página própria e protótipo local com cinco telas e filtros.
+- [x] Adicionar somente o link discreto no rodapé institucional.
+- [x] Verificar navegação, dados fictícios, filtros e celular em desktop/mobile.
