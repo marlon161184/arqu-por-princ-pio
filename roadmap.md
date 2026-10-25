@@ -12,3 +12,8 @@
 - [x] Extrair as 7 pranchas do documento anexado e servir em `public/enxoval/`.
 - [x] Criar a rota `/enxoval` com pranchas em escala, cabeçalho e rodapé próprios.
 - [x] Link discreto "Enxoval" no rodapé do site e verificação desktop/mobile.
+
+# Conceito · Área do cliente
+- [ ] Criar página própria e protótipo local com cinco telas e filtros.
+- [ ] Adicionar somente o link discreto no rodapé institucional.
+- [ ] Verificar navegação, dados fictícios, filtros e celular em desktop/mobile.
