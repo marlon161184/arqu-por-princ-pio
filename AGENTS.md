@@ -12,5 +12,6 @@
 - Keep digital portfolio content in typed `src/data/produtos.ts` and render it through focused suite, index, row, palette and typography components so content and presentation remain independent.
 - Store uploaded portfolio media as Lovable Assets pointers in `src/assets/produtos/` to keep binaries off the repository.
 - Load web fonts through the TanStack root head, the project's HTML document owner; there is no index.html.
+- Serve the brand enxoval as self-contained static boards under `public/enxoval/`, embedded in `/enxoval` as 1760px iframes scaled to the column; never rebuild the boards as React.
 - Bind suite accent and palette specimens from typed data; all surrounding interface colors use Arquê tokens so suite colors do not become interface themes.
 - Declare natural-ratio portfolio images in typed suite data so image framing stays independent of suite-specific presentation conditions.
