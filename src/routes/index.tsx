@@ -217,8 +217,9 @@ function Index() {
             <span className="text-branco [--wm-accent:var(--ultramar-claro)]"><ArqueWordmark style={{ height: 28, width: "auto" }} /></span>
             <Label className="text-nevoa">Estratégia · Pessoas · Marcas · Negócios</Label>
           </div>
-          <div className="mt-16 flex flex-col gap-4 border-t border-linha-escura pt-6 sm:flex-row sm:justify-between">
+          <div className="mt-16 flex flex-col gap-4 border-t border-linha-escura pt-6 sm:flex-row sm:items-center sm:justify-between">
             <Label className="text-nevoa">© 2026 Arquê · MBS DHO Ltda · CNPJ [00.000.000/0000-00]</Label>
+            <a href="/enxoval" className="label-mono text-nevoa underline-offset-4 hover:text-branco hover:underline">Enxoval</a>
             <Label className="text-branco">Por princípio.</Label>
           </div>
         </div>
