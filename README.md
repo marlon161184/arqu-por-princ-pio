@@ -27,3 +27,14 @@ npm run dev
 - TypeScript
 - React
 - Tailwind CSS
+
+## Critérios de aceite — Produtos digitais
+
+- Seção `produtos` entre Como trabalhamos e Fundador, com fundo carvão.
+- Duas suítes, 24 linhas de produtos, quatro telas fornecidas e nenhum conteúdo inventado.
+- Nomes nas fontes da própria suíte; rótulos e interface na linguagem Arquê.
+- Primeira linha aberta em cada suíte; no máximo uma aberta por suíte, sem animação.
+- Cantos retos, sem sombras ou degradês; paletas e acentos restritos aos espécimes.
+- Navegação Produtos nos menus desktop e mobile; rótulos 05, 06 e 07.
+- Imagens com descrição, controles com foco visível e expansão acessível.
+- Mobile empilhado, paleta em quatro colunas e sem rolagem horizontal.

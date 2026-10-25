@@ -5,6 +5,7 @@ import { Chevron } from "./primitives";
 const links = [
   { href: "#praticas", label: "Práticas" },
   { href: "#metodo", label: "Método" },
+  { href: "#produtos", label: "Produtos" },
   { href: "#fundador", label: "Fundador" },
   { href: "#contato", label: "Contato" },
 ];
