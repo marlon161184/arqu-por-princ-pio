@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { ArqueWordmark } from "@/components/ArqueWordmark";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -52,7 +53,7 @@ const como = [
   ["Equilíbrio entre cultura, marca e performance", "Resultados que preservam a identidade da organização."],
 ];
 
-function Label({ children, className = "text-ink-muted" }: { children: React.ReactNode; className?: string }) {
+function Label({ children, className = "text-ink-muted" }: { children: ReactNode; className?: string }) {
   return <p className={`label-mono ${className}`}>{children}</p>;
 }
 
