@@ -2,6 +2,7 @@ import { useLayoutEffect, useRef, useState } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 import { ArqueWordmark } from "@/components/ArqueWordmark";
 import { Chevron, Reveal } from "@/components/site/primitives";
+import catalogoRender from "@/assets/enxoval/catalogo-render.png.asset.json";
 
 const TITLE = "Enxoval Arquê — pranchas da marca";
 const DESC = "O enxoval de marca da Arquê: 24 peças em seis grupos, com medida, sangria, material e arquivo de entrega em cada prancha.";
