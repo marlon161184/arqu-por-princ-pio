@@ -8,3 +8,8 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- Keep digital portfolio content in typed `src/data/produtos.ts` and render it through focused suite, index, row, palette and typography components so content and presentation remain independent.
+- Store uploaded portfolio media as Lovable Assets pointers in `src/assets/produtos/` to keep binaries off the repository.
+- Load web fonts through the TanStack root head, the project's HTML document owner; there is no index.html.
+- Bind suite accent and palette specimens from typed data; all surrounding interface colors use Arquê tokens so suite colors do not become interface themes.

@@ -5,6 +5,7 @@ import { SiteHeader } from "@/components/site/SiteHeader";
 import { ContactForm } from "@/components/site/ContactForm";
 import { FounderPortrait } from "@/components/site/FounderPortrait";
 import { Chevron, Reveal } from "@/components/site/primitives";
+import { DigitalProducts } from "@/components/produtos/DigitalProducts";
 
 const TITLE = "Arquê — Por princípio.";
 const DESC = "Consultoria de estratégia, pessoas, marcas e negócios. Por princípio.";
@@ -181,12 +182,14 @@ function Index() {
           </div>
         </section>
 
+        <DigitalProducts />
+
         {/* Fundador */}
         <section id="fundador" aria-labelledby="fundador-title" className="bg-surface-alt">
           <div className="container-x grid-12 gap-y-12 py-24 lg:py-32">
             <div className="col-span-12 sm:col-span-8 lg:col-span-5"><FounderPortrait /></div>
             <Reveal className="col-span-12 flex flex-col justify-end lg:col-span-6 lg:col-start-7">
-              <Label>05 Fundador</Label>
+              <Label>06 Fundador</Label>
               <h2 id="fundador-title" className="h1-style mt-6 text-ink">Marlon Silva</h2>
               <p className="body-l measure mt-6 text-ink-muted">
                 Mais de 20 anos em recursos humanos, cultura e transformação organizacional. Atua na interseção entre pessoas, estratégia, design organizacional e marca, construindo a infraestrutura institucional que sustenta o crescimento das organizações.
@@ -199,7 +202,7 @@ function Index() {
         <section id="contato" aria-labelledby="contato-title" className="section-brand">
           <div className="container-x grid-12 gap-y-12 py-24 lg:py-32">
             <Reveal className="col-span-12 lg:col-span-6">
-              <Label className="text-marfim">06 Contato</Label>
+              <Label className="text-marfim">07 Contato</Label>
               <h2 id="contato-title" className="display-l mt-6 text-branco">Vamos começar pelo princípio.</h2>
               <p className="measure mt-6 text-ultramar-tint">Conte o desafio em poucas linhas. Respondemos por e-mail.</p>
             </Reveal>
