@@ -1,6 +1,6 @@
 import nexusCover from "@/assets/produtos/nexus-capa.jpg.asset.json";
 import nexusCulture from "@/assets/produtos/nexus-nosso-jeito.jpg.asset.json";
-import chlorumCompass from "@/assets/produtos/chlorum-bussola.jpg.asset.json";
+import chlorumCover from "@/assets/produtos/chlorum-people-analytics-capa.jpg.asset.json";
 import chlorumJobs from "@/assets/produtos/chlorum-job-hub.jpg.asset.json";
 
 export type Product = {
@@ -9,7 +9,7 @@ export type Product = {
 };
 export type Suite = {
   id: "nexus" | "people"; label: string; description: string; accent: string;
-  images: { src: string; alt: string; caption: string }[];
+  images: { src: string; alt: string; caption: string; naturalRatio?: boolean }[];
   architecture: { name: string; count: number; support: string; branch?: string }[];
   palette: { name: string; hex: string }[];
   typography: { family: string; weight: number; role: string; italic?: boolean }[];
@@ -66,7 +66,7 @@ export const suites: Suite[] = [
     id: "people", label: "SUÍTE 02 · CHLORUM SOLUTIONS · GENTE E REMUNERAÇÃO", accent: "#79B7E5",
     description: "Dado, metodologia, comunicação e governança numa única suíte. Doze produtos para uma indústria de operação contínua que decide com números e com gente.",
     images: [
-      { src: chlorumCompass.url, alt: "Tela Bússola Chlorum de People Intelligence, com posicionamento de mercado, alertas de retenção e equidade interna.", caption: "BÚSSOLA CHLORUM · PEOPLE INTELLIGENCE" },
+      { src: chlorumCover.url, alt: "Capa da suíte People Analytics da Chlorum Solutions: arte azul com ondas e moléculas e o título People Analytics", caption: "CAPA DO PEOPLE ANALYTICS · NUNITO + FRAUNCES", naturalRatio: true },
       { src: chlorumJobs.url, alt: "Tela do Hub de Job Descriptions Chlorum, com apresentação do hub e painel de consolidação de cargos.", caption: "HUB DE JOB DESCRIPTIONS" },
     ],
     architecture: [
