@@ -12,7 +12,8 @@
 - Keep digital portfolio content in typed `src/data/produtos.ts` and render it through focused suite, index, row, palette and typography components so content and presentation remain independent.
 - Store uploaded portfolio media as Lovable Assets pointers in `src/assets/produtos/` to keep binaries off the repository.
 - Load web fonts through the TanStack root head, the project's HTML document owner; there is no index.html.
-- Serve the brand enxoval as self-contained static boards under `public/enxoval/`, embedded in `/enxoval` as 1760px iframes scaled to the column; never rebuild the boards as React.
+- Serve the externally generated brand enxoval unchanged at `public/enxoval/enxoval.html`, produced from design-system tokens by a single vector engine; keep it standalone (no iframe), make `/enxoval` a client redirect with a visible fallback link, and link the footer directly to the HTML so the original navigation and exports remain intact.
+- The supplied enxoval version 2 contains 29 pieces in five collections (Papelaria, Sinalização, Clubinho Arquê, Digital e social, Kit de onboarding gamificado), with final-size SVG, PNG and PDF downloads; replace the whole external document rather than rebuilding its artwork in React.
 - Bind suite accent and palette specimens from typed data; all surrounding interface colors use Arquê tokens so suite colors do not become interface themes.
 - Declare natural-ratio portfolio images in typed suite data so image framing stays independent of suite-specific presentation conditions.
 - Keep the client-area concept in a standalone route with scoped CSS, typed fictional data and local React state; this isolates its phone presentation and interactions from the institutional site and static enxoval.

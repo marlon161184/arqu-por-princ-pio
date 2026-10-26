@@ -15,7 +15,7 @@ export function SiteFooter() {
         </div>
         <div className="mt-16 flex flex-col gap-4 border-t border-linha-escura pt-6 sm:flex-row sm:items-center sm:justify-between">
           <Label className="text-nevoa">© 2026 Arquê · MBS DHO Ltda · CNPJ [00.000.000/0000-00]</Label>
-          <a href="/enxoval" className="label-mono text-nevoa underline-offset-4 hover:text-branco hover:underline">Enxoval</a>
+          <a href="/enxoval/enxoval.html" className="label-mono text-nevoa underline-offset-4 hover:text-branco hover:underline">Enxoval</a>
           <Link to="/conceito/area-do-cliente" className="label-mono text-nevoa underline-offset-4 hover:text-branco hover:underline">Conceito · Área do cliente</Link>
           <Label className="text-branco">Por princípio.</Label>
         </div>

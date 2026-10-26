@@ -45,9 +45,9 @@ describe("Site footer", () => {
     expect(link.className).toContain("text-ultramar-claro");
   });
 
-  it("keeps the enxoval and client-area links pointing where they did", () => {
+  it("links directly to the standalone enxoval and preserves the client-area destination", () => {
     render(<SiteFooter />);
-    expect(screen.getByRole("link", { name: "Enxoval" })).toHaveAttribute("href", "/enxoval");
+    expect(screen.getByRole("link", { name: "Enxoval" })).toHaveAttribute("href", "/enxoval/enxoval.html");
     expect(screen.getByRole("link", { name: "Conceito · Área do cliente" })).toHaveAttribute(
       "href",
       "/conceito/area-do-cliente",
