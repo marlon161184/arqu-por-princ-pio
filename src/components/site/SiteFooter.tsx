@@ -16,6 +16,9 @@ export function SiteFooter() {
           <Label className="text-nevoa">© 2026 Arquê · MBS DHO Ltda · CNPJ [00.000.000/0000-00]</Label>
           <a href="/enxoval" className="label-mono text-nevoa underline-offset-4 hover:text-branco hover:underline">Enxoval</a>
           <Link to="/conceito/area-do-cliente" className="label-mono text-nevoa underline-offset-4 hover:text-branco hover:underline">Conceito · Área do cliente</Link>
+          <Label className="text-branco">Por princípio.</Label>
+        </div>
+        <div className="mt-6">
           <a
             href={PDF_HREF}
             download="arque-brandbook-design-system.pdf"
@@ -27,7 +30,6 @@ export function SiteFooter() {
             <Chevron size={10} className="shrink-0" />
             BRANDBOOK E DESIGN SYSTEM · PDF
           </a>
-          <Label className="text-branco">Por princípio.</Label>
         </div>
       </div>
     </footer>
