@@ -17,3 +17,8 @@
 - [x] Criar página própria e protótipo local com cinco telas e filtros.
 - [x] Adicionar somente o link discreto no rodapé institucional.
 - [x] Verificar navegação, dados fictícios, filtros e celular em desktop/mobile.
+
+# Brandbook em PDF
+- [x] Servir o PDF em `public/downloads/arque-brandbook-design-system.pdf`.
+- [x] Link discreto no rodapé, em ultramar-claro, abrindo em nova aba com download.
+- [x] Teste do rodapé e verificação do link em desktop/mobile.
