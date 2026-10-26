@@ -22,3 +22,8 @@
 - [x] Servir o PDF em `public/downloads/arque-brandbook-design-system.pdf`.
 - [x] Link discreto no rodapé, em ultramar-claro, abrindo em nova aba com download.
 - [x] Teste do rodapé e verificação do link em desktop/mobile.
+
+# Slides do site em PDF
+- [x] Servir o PDF em `public/downloads/arque-site-slides.pdf`.
+- [x] Segundo link discreto no rodapé, em ultramar-claro, abrindo em nova aba com download.
+- [x] Teste do rodapé e verificação do link em desktop/mobile.
