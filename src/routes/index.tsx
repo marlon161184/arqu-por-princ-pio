@@ -1,11 +1,10 @@
-import type { ReactNode } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArqueWordmark } from "@/components/ArqueWordmark";
+import { createFileRoute } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { ContactForm } from "@/components/site/ContactForm";
 import { FounderPortrait } from "@/components/site/FounderPortrait";
-import { Chevron, Reveal } from "@/components/site/primitives";
+import { Chevron, Label, Reveal } from "@/components/site/primitives";
 import { DigitalProducts } from "@/components/produtos/DigitalProducts";
+import { SiteFooter } from "@/components/site/SiteFooter";
 
 const TITLE = "Arquê — Por princípio.";
 const DESC = "Consultoria de estratégia, pessoas, marcas e negócios. Por princípio.";
@@ -53,10 +52,6 @@ const como = [
   ["Método com indicadores", "Cada etapa tem marcos claros e medidas acompanhadas."],
   ["Equilíbrio entre cultura, marca e performance", "Resultados que preservam a identidade da organização."],
 ];
-
-function Label({ children, className = "text-ink-muted" }: { children: ReactNode; className?: string }) {
-  return <p className={`label-mono ${className}`}>{children}</p>;
-}
 
 function Index() {
   return (
@@ -211,20 +206,7 @@ function Index() {
         </section>
       </main>
 
-      <footer className="section-dark">
-        <div className="container-x py-16">
-          <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-            <span className="text-branco [--wm-accent:var(--ultramar-claro)]"><ArqueWordmark style={{ height: 28, width: "auto" }} /></span>
-            <Label className="text-nevoa">Estratégia · Pessoas · Marcas · Negócios</Label>
-          </div>
-          <div className="mt-16 flex flex-col gap-4 border-t border-linha-escura pt-6 sm:flex-row sm:items-center sm:justify-between">
-            <Label className="text-nevoa">© 2026 Arquê · MBS DHO Ltda · CNPJ [00.000.000/0000-00]</Label>
-            <a href="/enxoval" className="label-mono text-nevoa underline-offset-4 hover:text-branco hover:underline">Enxoval</a>
-            <Link to="/conceito/area-do-cliente" className="label-mono text-nevoa underline-offset-4 hover:text-branco hover:underline">Conceito · Área do cliente</Link>
-            <Label className="text-branco">Por princípio.</Label>
-          </div>
-        </div>
-      </footer>
+      <SiteFooter />
     </>
   );
 }

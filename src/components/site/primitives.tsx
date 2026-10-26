@@ -30,3 +30,7 @@ export function Reveal({ children, as: Tag = "div", className = "" }: { children
   }, []);
   return <Tag ref={ref} className={`reveal ${className}`}>{children}</Tag>;
 }
+
+export function Label({ children, className = "text-ink-muted" }: { children: ReactNode; className?: string }) {
+  return <p className={`label-mono ${className}`}>{children}</p>;
+}
