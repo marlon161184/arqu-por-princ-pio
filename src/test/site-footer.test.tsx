@@ -14,6 +14,7 @@ vi.mock("@tanstack/react-router", () => ({
 import { SiteFooter } from "@/components/site/SiteFooter";
 
 const PDF_HREF = "/downloads/arque-brandbook-design-system.pdf";
+const SLIDES_HREF = "/downloads/arque-site-slides.pdf";
 
 afterEach(cleanup);
 
@@ -28,6 +29,19 @@ describe("Site footer", () => {
     expect(link).toHaveAttribute("target", "_blank");
     expect(link.getAttribute("rel")).toContain("noopener");
     expect(link).toHaveTextContent("BRANDBOOK E DESIGN SYSTEM · PDF");
+    expect(link.className).toContain("text-ultramar-claro");
+  });
+
+  it("offers the site slides as a second discreet PDF download", () => {
+    render(<SiteFooter />);
+    const link = screen.getByRole("link", {
+      name: "Baixar os slides do site da Arquê (PDF, 32 páginas)",
+    });
+    expect(link).toHaveAttribute("href", SLIDES_HREF);
+    expect(link).toHaveAttribute("download", "arque-site-slides.pdf");
+    expect(link).toHaveAttribute("target", "_blank");
+    expect(link.getAttribute("rel")).toContain("noopener");
+    expect(link).toHaveTextContent("SITE EM SLIDES · PDF");
     expect(link.className).toContain("text-ultramar-claro");
   });
 
@@ -47,5 +61,14 @@ describe("Site footer", () => {
     expect(bytes.subarray(0, 5).toString()).toBe("%PDF-");
     expect(bytes.length).toBeGreaterThan(400_000);
     expect(bytes.toString("latin1")).toContain("/Count 22");
+  });
+
+  it("serves a real 32-page slides PDF from the project's static downloads", () => {
+    const file = path.join(process.cwd(), "public", "downloads", "arque-site-slides.pdf");
+    expect(existsSync(file)).toBe(true);
+    const bytes = readFileSync(file);
+    expect(bytes.subarray(0, 5).toString()).toBe("%PDF-");
+    expect(bytes.length).toBeGreaterThan(8_000_000);
+    expect(bytes.toString("latin1")).toContain("/Count 32");
   });
 });
