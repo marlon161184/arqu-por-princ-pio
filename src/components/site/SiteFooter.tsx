@@ -3,6 +3,7 @@ import { ArqueWordmark } from "@/components/ArqueWordmark";
 import { Chevron, Label } from "@/components/site/primitives";
 
 const PDF_HREF = "/downloads/arque-brandbook-design-system.pdf";
+const SLIDES_HREF = "/downloads/arque-site-slides.pdf";
 
 export function SiteFooter() {
   return (
@@ -18,7 +19,7 @@ export function SiteFooter() {
           <Link to="/conceito/area-do-cliente" className="label-mono text-nevoa underline-offset-4 hover:text-branco hover:underline">Conceito · Área do cliente</Link>
           <Label className="text-branco">Por princípio.</Label>
         </div>
-        <div className="mt-6">
+        <div className="mt-6 flex flex-col items-start gap-4">
           <a
             href={PDF_HREF}
             download="arque-brandbook-design-system.pdf"
@@ -29,6 +30,17 @@ export function SiteFooter() {
           >
             <Chevron size={10} className="shrink-0" />
             BRANDBOOK E DESIGN SYSTEM · PDF
+          </a>
+          <a
+            href={SLIDES_HREF}
+            download="arque-site-slides.pdf"
+            target="_blank"
+            rel="noopener"
+            aria-label="Baixar os slides do site da Arquê (PDF, 32 páginas)"
+            className="label-mono inline-flex items-center gap-2 whitespace-nowrap text-ultramar-claro underline-offset-4 hover:underline"
+          >
+            <Chevron size={10} className="shrink-0" />
+            SITE EM SLIDES · PDF
           </a>
         </div>
       </div>
