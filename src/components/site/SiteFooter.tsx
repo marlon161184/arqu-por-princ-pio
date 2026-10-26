@@ -22,7 +22,7 @@ export function SiteFooter() {
             target="_blank"
             rel="noopener"
             aria-label="Baixar o brandbook e design system da Arquê (PDF, 22 páginas)"
-            className="label-mono inline-flex items-center gap-2 text-ultramar-claro underline-offset-4 hover:underline"
+            className="label-mono inline-flex items-center gap-2 whitespace-nowrap text-ultramar-claro underline-offset-4 hover:underline"
           >
             <Chevron size={10} className="shrink-0" />
             BRANDBOOK E DESIGN SYSTEM · PDF
