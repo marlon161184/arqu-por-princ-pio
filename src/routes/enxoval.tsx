@@ -1,8 +1,8 @@
 import { useEffect } from "react";
 import { createFileRoute } from "@tanstack/react-router";
 
-const TITLE = "Enxoval Arquê — versão 2";
-const DESC = "29 peças em cinco coleções, com downloads em SVG, PNG e PDF nos tamanhos finais.";
+const TITLE = "Enxoval Arquê — versão 1.0";
+const DESC = "34 peças em seis coleções, com downloads em SVG, PNG e PDF nos tamanhos finais.";
 const ENXOVAL_HREF = "/enxoval/enxoval.html";
 
 export const Route = createFileRoute("/enxoval")({
@@ -28,7 +28,7 @@ export function EnxovalRedirect() {
   return (
     <main className="container-x py-16">
       <a href={ENXOVAL_HREF} className="label-mono text-brand underline underline-offset-4">
-        Enxoval de marca · Versão 2
+        Enxoval de marca · Versão 1.0
       </a>
     </main>
   );

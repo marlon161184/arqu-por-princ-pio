@@ -28,10 +28,10 @@
 - [x] Segundo link discreto no rodapé, em ultramar-claro, abrindo em nova aba com download.
 - [x] Teste do rodapé e verificação do link em desktop/mobile.
 
-# Enxoval de marca · Versão 2
+# Enxoval de marca · Versão 1.0
 - [x] Salvar o HTML original byte a byte em `public/enxoval/enxoval.html` e excluir as sete pranchas e o render antigos.
 - [x] Reduzir `/enxoval` a redirecionamento no cliente com link visível e apontar o rodapé diretamente ao HTML.
-- [x] Registrar geração externa com um motor vetorial único a partir dos tokens: 29 peças em Papelaria, Sinalização, Clubinho Arquê, Digital e social e Kit de onboarding gamificado, com SVG, PNG e PDF nos tamanhos finais.
+- [x] Registrar geração externa com um motor vetorial único a partir dos tokens: 34 peças em Papelaria, Sinalização, Clubinho Arquê, Digital e social, Kit de onboarding gamificado e Kit cliente novo, com SVG, PNG e PDF nos tamanhos finais.
 - [x] Verificar acesso, downloads, testes e preservação do PDF do brandbook.
 
 # Seção 05 Produtos
