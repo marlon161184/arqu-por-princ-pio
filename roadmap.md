@@ -33,3 +33,6 @@
 - [x] Reduzir `/enxoval` a redirecionamento no cliente com link visível e apontar o rodapé diretamente ao HTML.
 - [x] Registrar geração externa com um motor vetorial único a partir dos tokens: 29 peças em Papelaria, Sinalização, Clubinho Arquê, Digital e social e Kit de onboarding gamificado, com SVG, PNG e PDF nos tamanhos finais.
 - [x] Verificar acesso, downloads, testes e preservação do PDF do brandbook.
+
+# Seção 05 Produtos
+- [x] Capítulos 05.1 Por frente e 05.2 IA & Inovação, menções no hero e fundador, testes e verificação 375/1280px.
