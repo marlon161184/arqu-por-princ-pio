@@ -1,13 +1,3 @@
-# Produtos digitais
-- [x] Add typed suite data and supplied image assets.
-- [x] Add portfolio specimens, product accordions and contact closing.
-- [x] Update navigation, section labels and acceptance criteria.
-- [x] Verify accordion behavior, fonts, images and mobile layout.
-
-# Capa People Analytics
-- [x] Importar a arte original, se disponível, ou usar a capa anexada.
-- [x] Trocar somente a imagem principal e preservar sua proporção natural.
-- [x] Verificar as duas capas e manter o Job Hub como imagem secundária.
 # Página Enxoval
 - [x] Extrair as 7 pranchas do documento anexado e servir em `public/enxoval/`.
 - [x] Criar a rota `/enxoval` com pranchas em escala, cabeçalho e rodapé próprios.
@@ -36,6 +26,10 @@
 
 # Seção 05 Produtos
 - [x] Capítulos 05.1 Por frente e 05.2 IA & Inovação, menções no hero e fundador, testes e verificação 375/1280px.
+- [x] Retirar links de versão digital e portfólio de suítes, seus componentes, dados, fontes e assets sem uso; preservar produtosPorFrente.
+- [x] Atualizar o texto de IA & Inovação e incluir 05.3 Clientes com o logo original da Newe, sem placeholder Hyndra.
+- [ ] Verificar testes, 375/1280px e assinatura intacta do enxoval, sem publicar.
+- [ ] Incluir logo Hyndra — aguardando envio do arquivo pelo usuário.
 
 # Autenticação e área do cliente real
 - [x] Habilitar e-mail/senha e Google; página pública `/auth` com entrar, criar conta e confirmação de e-mail.

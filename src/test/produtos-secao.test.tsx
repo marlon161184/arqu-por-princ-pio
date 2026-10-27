@@ -23,16 +23,26 @@ describe("Seção 05 Produtos", () => {
     }
   });
 
-  it("shows eight digital badges, all linking to #ia-inovacao", () => {
+  it("keeps the sixteen consultancy products without digital-version navigation", () => {
     render(<DigitalProducts />);
-    const badges = screen.getAllByRole("link", { name: /Versão digital/i });
-    expect(badges).toHaveLength(8);
-    badges.forEach((b) => expect(b).toHaveAttribute("href", "#ia-inovacao"));
+    expect(frentes.flatMap((frente) => frente.produtos)).toHaveLength(16);
+    for (const frente of frentes) {
+      expect(within(screen.getByRole("list", { name: `Produtos de ${frente.name}` })).queryAllByRole("link")).toHaveLength(0);
+    }
   });
 
-  it("still renders the 24 digital products", () => {
+  it("removes digital product accordions and retains the contact invitation", () => {
     render(<DigitalProducts />);
-    expect(screen.getAllByRole("button", { expanded: false }).length + screen.getAllByRole("button", { expanded: true }).length).toBe(24);
+    expect(screen.queryAllByRole("button", { expanded: false })).toHaveLength(0);
+    expect(screen.queryAllByRole("button", { expanded: true })).toHaveLength(0);
+    expect(screen.getByRole("link", { name: "Conversar sobre um produto" })).toHaveAttribute("href", "#contato");
+  });
+
+  it("shows only the supplied Newe client logo without a Hyndra placeholder", () => {
+    render(<DigitalProducts />);
+    expect(screen.getAllByRole("img")).toHaveLength(1);
+    expect(screen.getByRole("img", { name: "Newe Urbanismo" })).toHaveAttribute("src", expect.stringContaining("newe-logo-negativo.png"));
+    expect(screen.queryByRole("img", { name: /Hyndra/ })).not.toBeInTheDocument();
   });
 
   it("keeps Produtos in the menu", () => {
