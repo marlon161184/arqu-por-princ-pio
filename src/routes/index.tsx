@@ -68,7 +68,7 @@ function Index() {
               <Label>Estratégia · Pessoas · Marcas · Negócios</Label>
               <h1 id="hero-title" className="display-xl mt-8 text-ink">Por princípio.</h1>
               <p className="body-l measure mt-8 text-ink-muted">
-                Consultoria de estratégia, pessoas, marcas e negócios. Atuamos junto às lideranças, do princípio à estrutura e da estrutura aos resultados.
+                Consultoria de estratégia, pessoas, marcas e negócios. Atuamos junto às lideranças, do princípio à estrutura e da estrutura aos resultados. Quando a estrutura precisa existir como sistema, a construímos com IA.
               </p>
               <div className="mt-10 flex flex-wrap items-center gap-8">
                 <a href="#contato" className="btn-primary label-mono">Conversar <Chevron rotate={90} /></a>
@@ -187,7 +187,7 @@ function Index() {
               <Label>06 Fundador</Label>
               <h2 id="fundador-title" className="h1-style mt-6 text-ink">Marlon Silva</h2>
               <p className="body-l measure mt-6 text-ink-muted">
-                Mais de 20 anos em recursos humanos, cultura e transformação organizacional. Atua na interseção entre pessoas, estratégia, design organizacional e marca, construindo a infraestrutura institucional que sustenta o crescimento das organizações.
+                Mais de 20 anos em recursos humanos, cultura e transformação organizacional. Atua na interseção entre pessoas, estratégia, design organizacional e marca, construindo a infraestrutura institucional que sustenta o crescimento das organizações. Materializa iniciativas, governança e movimentos nas organizações por meio de produtos digitais arquitetados com IA e no-code.
               </p>
             </Reveal>
           </div>
