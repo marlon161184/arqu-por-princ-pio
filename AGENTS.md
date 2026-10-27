@@ -18,3 +18,4 @@
 - Declare natural-ratio portfolio images in typed suite data so image framing stays independent of suite-specific presentation conditions.
 - Keep the client-area concept in a standalone route with scoped CSS, typed fictional data and local React state; this isolates its phone presentation and interactions from the institutional site and static enxoval.
 - Keep the site footer in `src/components/site/SiteFooter.tsx`, rendered once from the index route, so its links are testable without a router; give new footer links their own line instead of joining the bottom row, which is already at full width.
+- Authentication uses Lovable Cloud Auth (email/password + managed Google via `lovable.auth.signInWithOAuth`), with no profiles table; the public sign-in page is `src/routes/auth.tsx` and protected routes live under `src/routes/_authenticated/` behind the client-side gate (`ssr: false`, redirect to `/auth`), because the session lives in browser storage.

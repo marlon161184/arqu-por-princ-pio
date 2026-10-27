@@ -36,3 +36,9 @@
 
 # Seção 05 Produtos
 - [x] Capítulos 05.1 Por frente e 05.2 IA & Inovação, menções no hero e fundador, testes e verificação 375/1280px.
+
+# Autenticação e área do cliente real
+- [x] Habilitar e-mail/senha e Google; página pública `/auth` com entrar, criar conta e confirmação de e-mail.
+- [x] Gate `_authenticated` (ssr: false, redireciona a `/auth`) e área real em `/area-do-cliente` com saudação e sair.
+- [x] Cabeçalho com "Entrar"/"Área do cliente" conforme a sessão; link discreto no rodapé; ouvinte único de auth na raiz.
+- [ ] Modelar dados reais da área do cliente (projetos, entregas, documentos por cliente) — próxima etapa.
