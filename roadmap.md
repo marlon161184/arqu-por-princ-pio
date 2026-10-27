@@ -41,3 +41,8 @@
 - [x] Adicionar cartões do enxoval e conceito entre Fundador e Contato, com imagem Arquê e miniatura fictícia em código.
 - [x] Incluir Bastidores nos menus e renumerar Contato para 08, preservando rodapé e enxoval.
 - [x] Verificar testes, links e ausência de scroll horizontal em 375px e 1280px, sem publicar.
+
+# Clientes · Produtos por empresa
+- [x] Substituir logos negativos pelos anexos brancos originais como Lovable Assets.
+- [x] Organizar três grupos e 12 itens com descrições revisadas em dados tipados, preservando 05.2 e fechamento.
+- [ ] Verificar todos os testes, layout em 375/1280px e assinatura do enxoval, sem publicar.
