@@ -1,6 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArqueWordmark } from "@/components/ArqueWordmark";
+import { supabase } from "@/integrations/supabase/client";
 import { Chevron } from "./primitives";
+
+function useSignedIn() {
+  const [signedIn, setSignedIn] = useState(false);
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => setSignedIn(!!data.session));
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => setSignedIn(!!session));
+    return () => subscription.unsubscribe();
+  }, []);
+  return signedIn;
+}
+
+function SessionLink({ className, onClick }: { className: string; onClick?: () => void }) {
+  const signedIn = useSignedIn();
+  return (
+    <a href={signedIn ? "/area-do-cliente" : "/auth"} onClick={onClick} className={className}>
+      {signedIn ? "Área do cliente" : "Entrar"}
+    </a>
+  );
+}
 
 const links = [
   { href: "#praticas", label: "Práticas" },
@@ -22,6 +42,7 @@ export function SiteHeader() {
           {links.map((l) => (
             <a key={l.href} href={l.href} className="label-mono text-ink hover:text-brand">{l.label}</a>
           ))}
+          <SessionLink className="label-mono text-ink hover:text-brand" />
           <a href="#contato" className="label-mono inline-flex items-center gap-2 text-brand">
             Conversar <Chevron rotate={90} />
           </a>
@@ -48,6 +69,7 @@ export function SiteHeader() {
                 {l.label}
               </a>
             ))}
+            <SessionLink onClick={() => setOpen(false)} className="h1-style flex min-h-16 items-center border-b border-linha-escura text-concreto" />
           </nav>
         </div>
       )}

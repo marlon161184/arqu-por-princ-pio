@@ -20,6 +20,9 @@ export function SiteFooter() {
           <Label className="text-branco">Por princípio.</Label>
         </div>
         <div className="mt-6 flex flex-col items-start gap-4">
+          <Link to="/area-do-cliente" className="label-mono text-nevoa underline-offset-4 hover:text-branco hover:underline">
+            Área do cliente
+          </Link>
           <a
             href={PDF_HREF}
             download="arque-brandbook-design-system.pdf"

@@ -54,6 +54,11 @@ describe("Site footer", () => {
     );
   });
 
+  it("offers discreet access to the authenticated client area on its own line", () => {
+    render(<SiteFooter />);
+    expect(screen.getByRole("link", { name: "Área do cliente" })).toHaveAttribute("href", "/area-do-cliente");
+  });
+
   it("serves a real 22-page PDF from the project's static downloads", () => {
     const file = path.join(process.cwd(), "public", "downloads", "arque-brandbook-design-system.pdf");
     expect(existsSync(file)).toBe(true);
