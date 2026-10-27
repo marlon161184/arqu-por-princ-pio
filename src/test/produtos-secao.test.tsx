@@ -38,11 +38,11 @@ describe("Seção 05 Produtos", () => {
     expect(screen.getByRole("link", { name: "Conversar sobre um produto" })).toHaveAttribute("href", "#contato");
   });
 
-  it("shows only the supplied Newe client logo without a Hyndra placeholder", () => {
+  it("shows the two supplied client logos", () => {
     render(<DigitalProducts />);
-    expect(screen.getAllByRole("img")).toHaveLength(1);
+    expect(screen.getAllByRole("img")).toHaveLength(2);
     expect(screen.getByRole("img", { name: "Newe Urbanismo" })).toHaveAttribute("src", expect.stringContaining("newe-logo-negativo.png"));
-    expect(screen.queryByRole("img", { name: /Hyndra/ })).not.toBeInTheDocument();
+    expect(screen.getByRole("img", { name: "Hyndra Participações" })).toHaveAttribute("src", expect.stringContaining("hyndra-logo-negativo.png"));
   });
 
   it("keeps Produtos in the menu", () => {

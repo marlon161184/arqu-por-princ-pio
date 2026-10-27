@@ -29,7 +29,7 @@
 - [x] Retirar links de versão digital e portfólio de suítes, seus componentes, dados, fontes e assets sem uso; preservar produtosPorFrente.
 - [x] Atualizar o texto de IA & Inovação e incluir 05.3 Clientes com o logo original da Newe, sem placeholder Hyndra.
 - [x] Verificar 24 testes, logo e botão de contato em 375/1280px, sem rolagem horizontal; assinatura do enxoval intacta, sem publicar.
-- [ ] Incluir logo Hyndra — aguardando envio do arquivo pelo usuário.
+- [x] Incluir logo Hyndra na célula 2 de 05.3 Clientes, com alt, altura 64px e o mesmo tratamento da Newe (72px), sem recolorir.
 
 # Autenticação e área do cliente real
 - [x] Habilitar e-mail/senha e Google; página pública `/auth` com entrar, criar conta e confirmação de e-mail.
