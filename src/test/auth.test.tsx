@@ -31,9 +31,9 @@ describe("Autenticação e área do cliente", () => {
   });
 
   it("keeps the intended destination same-origin on the sign-in page", () => {
-    const validate = AuthRoute.options.validateSearch;
-    expect(validate?.({ redirect: "/area-do-cliente" })).toEqual({ redirect: "/area-do-cliente" });
-    expect(validate?.({ redirect: "https://exemplo-externo.com" })).toEqual({ redirect: "/area-do-cliente" });
-    expect(validate?.({})).toEqual({ redirect: "/area-do-cliente" });
+    const validate = AuthRoute.options.validateSearch as (search: Record<string, unknown>) => { redirect: string };
+    expect(validate({ redirect: "/area-do-cliente" })).toEqual({ redirect: "/area-do-cliente" });
+    expect(validate({ redirect: "https://exemplo-externo.com" })).toEqual({ redirect: "/area-do-cliente" });
+    expect(validate({})).toEqual({ redirect: "/area-do-cliente" });
   });
 });
