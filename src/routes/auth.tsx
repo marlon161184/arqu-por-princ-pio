@@ -18,7 +18,7 @@ function sanitizeRedirect(value: unknown): string {
 }
 
 export const Route = createFileRoute("/auth")({
-  validateSearch: (search: Record<string, unknown>) => ({ redirect: sanitizeRedirect(search.redirect) }),
+  validateSearch: (search: Record<string, unknown>) => ({ redirect: sanitizeRedirect(search["redirect"]) }),
   head: () => ({
     meta: [
       { title: "Área do cliente — Entrar · Arquê" },

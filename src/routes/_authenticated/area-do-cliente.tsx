@@ -33,7 +33,7 @@ function ClientAreaHome() {
     await queryClient.cancelQueries();
     queryClient.clear();
     await supabase.auth.signOut();
-    navigate({ to: "/auth", replace: true });
+    navigate({ to: "/auth", search: { redirect: "/area-do-cliente" }, replace: true });
   }
 
   return (
