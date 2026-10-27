@@ -42,3 +42,8 @@
 - [x] Gate `_authenticated` (ssr: false, redireciona a `/auth`) e área real em `/area-do-cliente` com saudação e sair.
 - [x] Cabeçalho com "Entrar"/"Área do cliente" conforme a sessão; link discreto no rodapé; ouvinte único de auth na raiz.
 - [ ] Modelar dados reais da área do cliente (projetos, entregas, documentos por cliente) — próxima etapa.
+
+# Bastidores na home
+- [x] Adicionar cartões do enxoval e conceito entre Fundador e Contato, com imagem Arquê e miniatura fictícia em código.
+- [x] Incluir Bastidores nos menus e renumerar Contato para 08, preservando rodapé e enxoval.
+- [ ] Verificar testes, links e ausência de scroll horizontal em 375px e 1280px, sem publicar.

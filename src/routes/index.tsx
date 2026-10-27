@@ -1,10 +1,12 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { ContactForm } from "@/components/site/ContactForm";
 import { FounderPortrait } from "@/components/site/FounderPortrait";
 import { Chevron, Label, Reveal } from "@/components/site/primitives";
 import { DigitalProducts } from "@/components/produtos/DigitalProducts";
 import { SiteFooter } from "@/components/site/SiteFooter";
+import { ArqueWordmark } from "@/components/ArqueWordmark";
+import kitCliente from "@/assets/kitcliente.webp.asset.json";
 
 const TITLE = "Arquê — Por princípio.";
 const DESC = "Consultoria de estratégia, pessoas, marcas e negócios. Por princípio.";
@@ -193,11 +195,64 @@ function Index() {
           </div>
         </section>
 
+        <section id="bastidores" aria-labelledby="bastidores-title" className="bg-surface">
+          <div className="container-x py-24 lg:py-32">
+            <Reveal className="grid-12 gap-y-8">
+              <div className="col-span-12 lg:col-span-6">
+                <Label>07 Bastidores</Label>
+                <h2 id="bastidores-title" className="h1-style mt-6 max-w-[14ch] text-ink">A Arquê por dentro.</h2>
+              </div>
+              <p className="body-l measure col-span-12 text-ink-muted lg:col-span-6 lg:self-end">
+                O que propomos aos clientes, aplicamos a nós mesmos: uma marca desenhada como sistema e uma experiência de relação pensada de ponta a ponta.
+              </p>
+            </Reveal>
+            <div className="mt-16 grid grid-cols-1 gap-6 md:grid-cols-2">
+              <Reveal as="article" className="min-w-0 border-t-2 border-carvao pt-5 hover:border-ultramar">
+                <div className="label-mono flex flex-wrap justify-between gap-x-4 gap-y-2 text-grafite">
+                  <span>Enxoval da marca</span><span>34 peças · 6 coleções</span>
+                </div>
+                <div className="mt-5 aspect-[4/3] overflow-hidden bg-surface-alt">
+                  <img src={kitCliente.url} alt="Kit cliente novo da Arquê: caixa, caixa de som e boné" className="h-full w-full object-cover" loading="lazy" width={1024} height={768} />
+                </div>
+                <h3 className="h3-style mt-6 text-ink">Enxoval</h3>
+                <p className="mt-3 max-w-[44ch] text-ink-muted">Papelaria, vestuário, brindes e kits: a marca aplicada em cada ponto de contato, do primeiro dia ao fim do projeto.</p>
+                <a href="/enxoval/enxoval.html" className="label-mono mt-4 inline-flex min-h-11 items-center gap-2 text-brand underline-offset-4 hover:underline">Ver o enxoval <Chevron rotate={90} /></a>
+              </Reveal>
+              <Reveal as="article" className="min-w-0 border-t-2 border-carvao pt-5 hover:border-ultramar">
+                <div className="label-mono flex flex-wrap justify-between gap-x-4 gap-y-2 text-grafite">
+                  <span>Área do cliente</span><span>Conceito</span>
+                </div>
+                <div aria-hidden="true" className="mt-5 flex aspect-[4/3] justify-center overflow-hidden bg-surface-alt">
+                  <div className="mt-8 h-[440px] w-[300px] max-w-[calc(100%-32px)] shrink-0 border border-carvao bg-branco p-6 text-carvao [--wm-accent:var(--carvao)]">
+                    <ArqueWordmark className="h-auto w-16" />
+                    <p className="label-mono mt-6 text-grafite">Olá, Helena · Empresa Exemplo Logística</p>
+                    <p className="h3-style mt-4">2 projetos em andamento.</p>
+                    <div className="mt-6 border border-carvao p-3">
+                      <p className="label-mono text-grafite">01 · Estruturar · 70%</p>
+                      <p className="mt-2 text-sm">Projeto de exemplo A</p>
+                      <div className="mt-3 h-1 bg-rule"><div className="h-full w-[70%] bg-ultramar" /></div>
+                    </div>
+                    <div className="mt-3 border border-carvao p-3">
+                      <p className="label-mono text-grafite">02 · Compreender · 45%</p>
+                      <p className="mt-2 text-sm">Projeto de exemplo B</p>
+                      <div className="mt-3 h-1 bg-rule"><div className="h-full w-[45%] bg-ultramar" /></div>
+                    </div>
+                    <p className="label-mono mt-5 text-grafite">Dados 100% fictícios · Conceito</p>
+                  </div>
+                </div>
+                <h3 className="h3-style mt-6 text-ink">Área do cliente</h3>
+                <p className="mt-3 max-w-[44ch] text-ink-muted">Fases, entregas e documentos dos projetos em um só lugar. Um protótipo navegável, com dados fictícios.</p>
+                <Link to="/conceito/area-do-cliente" className="label-mono mt-4 inline-flex min-h-11 items-center gap-2 text-brand underline-offset-4 hover:underline">Ver o conceito <Chevron rotate={90} /></Link>
+              </Reveal>
+            </div>
+          </div>
+        </section>
+
         {/* Contato */}
         <section id="contato" aria-labelledby="contato-title" className="section-brand">
           <div className="container-x grid-12 gap-y-12 py-24 lg:py-32">
             <Reveal className="col-span-12 lg:col-span-6">
-              <Label className="text-marfim">07 Contato</Label>
+              <Label className="text-marfim">08 Contato</Label>
               <h2 id="contato-title" className="display-l mt-6 text-branco">Vamos começar pelo princípio.</h2>
               <p className="measure mt-6 text-ultramar-tint">Conte o desafio em poucas linhas. Respondemos por e-mail.</p>
             </Reveal>
