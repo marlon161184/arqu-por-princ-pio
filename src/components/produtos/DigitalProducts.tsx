@@ -1,5 +1,4 @@
-import hyndraLogo from "@/assets/hyndra-logo-negativo.png.asset.json";
-import neweLogo from "@/assets/newe-logo-negativo.png.asset.json";
+import { clientes } from "@/data/clientes";
 import { frentes } from "@/data/produtosPorFrente";
 import { Button } from "@/components/ui/button";
 import { Chevron } from "@/components/site/primitives";
@@ -36,13 +35,18 @@ export function DigitalProducts() {
         <section aria-labelledby="clientes-title" className="my-16">
           <p className="label-mono text-ultramar-claro">05.3 Clientes</p>
           <h3 id="clientes-title" className="h3-style mt-6 text-concreto">Quem constrói conosco.</h3>
-          <div className="mt-8 grid grid-cols-1 border-t border-linha-escura sm:grid-cols-2">
-            <div className="flex min-h-40 min-w-0 items-center border border-linha-escura px-8 py-10">
-              <img src={neweLogo.url} alt="Newe Urbanismo" className="h-[72px] w-auto max-w-full object-contain object-left" loading="lazy" decoding="async" />
-            </div>
-            <div className="flex min-h-40 min-w-0 items-center border border-linha-escura px-8 py-10">
-              <img src={hyndraLogo.url} alt="Hyndra Participações" className="h-[64px] w-auto max-w-full object-contain object-left" loading="lazy" decoding="async" />
-            </div>
+          <div className="mt-8">
+            {clientes.map((grupo) => <div key={grupo.id} className="grid-12 gap-y-8 border-t border-linha-escura py-10 lg:py-12" data-cliente-grupo={grupo.id}>
+              <div className="col-span-12 flex min-w-0 flex-col items-start gap-8 lg:col-span-4">
+                {grupo.logos.map((logo) => <img key={logo.alt} src={logo.src} alt={logo.alt} height={logo.height} className={`${logo.height === 72 ? "h-[72px]" : "h-[64px]"} w-auto max-w-full object-contain object-left`} loading="lazy" decoding="async" />)}
+              </div>
+              <dl className="col-span-12 min-w-0 lg:col-span-8">
+                {grupo.itens.map((item) => <div key={item.nome} className="border-b border-linha-escura py-5 first:pt-0">
+                  <dt className="text-lg font-semibold text-concreto">{item.nome}</dt>
+                  <dd className="mt-2 max-w-[60ch] text-nevoa">{item.descricao}</dd>
+                </div>)}
+              </dl>
+            </div>)}
           </div>
         </section>
         <div className="grid-12 gap-y-8 border-t border-linha-escura pt-16">

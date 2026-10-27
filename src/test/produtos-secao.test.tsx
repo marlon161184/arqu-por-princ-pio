@@ -3,6 +3,7 @@ import { afterEach, describe, expect, it } from "vitest";
 import { DigitalProducts } from "@/components/produtos/DigitalProducts";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { frentes } from "@/data/produtosPorFrente";
+import { clientes } from "@/data/clientes";
 
 afterEach(cleanup);
 
@@ -38,11 +39,32 @@ describe("Seção 05 Produtos", () => {
     expect(screen.getByRole("link", { name: "Conversar sobre um produto" })).toHaveAttribute("href", "#contato");
   });
 
-  it("shows the two supplied client logos", () => {
+  it("shows the supplied white logos in their company groups", () => {
     render(<DigitalProducts />);
-    expect(screen.getAllByRole("img")).toHaveLength(2);
-    expect(screen.getByRole("img", { name: "Newe Urbanismo" })).toHaveAttribute("src", expect.stringContaining("newe-logo-negativo.png"));
-    expect(screen.getByRole("img", { name: "Hyndra Participações" })).toHaveAttribute("src", expect.stringContaining("hyndra-logo-negativo.png"));
+    expect(screen.getAllByRole("img")).toHaveLength(4);
+    for (const logo of screen.getAllByRole("img", { name: "Newe Urbanismo" })) {
+      expect(logo).toHaveAttribute("src", expect.stringContaining("newe-logo-branco.png"));
+      expect(logo).toHaveAttribute("height", "72");
+    }
+    for (const logo of screen.getAllByRole("img", { name: "Hyndra Participações" })) {
+      expect(logo).toHaveAttribute("src", expect.stringContaining("hyndra-logo-branco.png"));
+      expect(logo).toHaveAttribute("height", "64");
+    }
+    expect(clientes.map((grupo) => [grupo.id, grupo.itens.length])).toEqual([
+      ["hyndra-e-newe", 7], ["hyndra", 1], ["newe", 4],
+    ]);
+  });
+
+  it("renders all twelve client items with their full descriptions", () => {
+    render(<DigitalProducts />);
+    expect(screen.getAllByRole("term")).toHaveLength(12);
+    expect(screen.getAllByRole("definition")).toHaveLength(12);
+    for (const grupo of clientes) {
+      for (const item of grupo.itens) {
+        const term = screen.getByText(item.nome, { selector: "dt" });
+        expect(term.nextElementSibling?.textContent).toBe(item.descricao);
+      }
+    }
   });
 
   it("keeps Produtos in the menu", () => {
