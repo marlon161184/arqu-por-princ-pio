@@ -46,4 +46,4 @@
 # Bastidores na home
 - [x] Adicionar cartões do enxoval e conceito entre Fundador e Contato, com imagem Arquê e miniatura fictícia em código.
 - [x] Incluir Bastidores nos menus e renumerar Contato para 08, preservando rodapé e enxoval.
-- [ ] Verificar testes, links e ausência de scroll horizontal em 375px e 1280px, sem publicar.
+- [x] Verificar testes, links e ausência de scroll horizontal em 375px e 1280px, sem publicar.
