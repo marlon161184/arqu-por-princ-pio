@@ -1,3 +1,4 @@
+import hyndraLogo from "@/assets/hyndra-logo-negativo.png.asset.json";
 import neweLogo from "@/assets/newe-logo-negativo.png.asset.json";
 import { frentes } from "@/data/produtosPorFrente";
 import { Button } from "@/components/ui/button";
@@ -37,9 +38,11 @@ export function DigitalProducts() {
           <h3 id="clientes-title" className="h3-style mt-6 text-concreto">Quem constrói conosco.</h3>
           <div className="mt-8 grid grid-cols-1 border-t border-linha-escura sm:grid-cols-2">
             <div className="flex min-h-40 min-w-0 items-center border border-linha-escura px-8 py-10">
-              <img src={neweLogo.url} alt="Newe Urbanismo" className="h-16 w-auto max-w-full object-contain object-left sm:h-20" loading="lazy" decoding="async" />
+              <img src={neweLogo.url} alt="Newe Urbanismo" className="h-[72px] w-auto max-w-full object-contain object-left" loading="lazy" decoding="async" />
             </div>
-            {/* TODO: logo Hyndra */}
+            <div className="flex min-h-40 min-w-0 items-center border border-linha-escura px-8 py-10">
+              <img src={hyndraLogo.url} alt="Hyndra Participações" className="h-[64px] w-auto max-w-full object-contain object-left" loading="lazy" decoding="async" />
+            </div>
           </div>
         </section>
         <div className="grid-12 gap-y-8 border-t border-linha-escura pt-16">
