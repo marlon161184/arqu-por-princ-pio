@@ -28,7 +28,7 @@
 - [x] Capítulos 05.1 Por frente e 05.2 IA & Inovação, menções no hero e fundador, testes e verificação 375/1280px.
 - [x] Retirar links de versão digital e portfólio de suítes, seus componentes, dados, fontes e assets sem uso; preservar produtosPorFrente.
 - [x] Atualizar o texto de IA & Inovação e incluir 05.3 Clientes com o logo original da Newe, sem placeholder Hyndra.
-- [ ] Verificar testes, 375/1280px e assinatura intacta do enxoval, sem publicar.
+- [x] Verificar 24 testes, logo e botão de contato em 375/1280px, sem rolagem horizontal; assinatura do enxoval intacta, sem publicar.
 - [ ] Incluir logo Hyndra — aguardando envio do arquivo pelo usuário.
 
 # Autenticação e área do cliente real
