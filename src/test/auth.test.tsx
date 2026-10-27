@@ -25,7 +25,8 @@ describe("Autenticação e área do cliente", () => {
       expect.unreachable("o gate deve redirecionar quem não tem sessão");
     } catch (error) {
       expect(isRedirect(error)).toBe(true);
-      expect((error as { to?: string }).to).toBe("/auth");
+      const redirect = error as { to?: string; options?: { to?: string } };
+      expect(redirect.options?.to ?? redirect.to).toBe("/auth");
     }
   });
 
