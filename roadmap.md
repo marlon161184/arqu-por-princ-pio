@@ -45,4 +45,4 @@
 # Clientes · Produtos por empresa
 - [x] Substituir logos negativos pelos anexos brancos originais como Lovable Assets.
 - [x] Organizar três grupos e 12 itens com descrições revisadas em dados tipados, preservando 05.2 e fechamento.
-- [ ] Verificar todos os testes, layout em 375/1280px e assinatura do enxoval, sem publicar.
+- [x] Verificar 25 testes, layout em 375/1280px sem rolagem horizontal, logos íntegros, botão de contato e assinatura do enxoval intacta, sem publicar.
