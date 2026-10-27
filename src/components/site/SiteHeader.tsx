@@ -1,6 +1,26 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ArqueWordmark } from "@/components/ArqueWordmark";
+import { supabase } from "@/integrations/supabase/client";
 import { Chevron } from "./primitives";
+
+function useSignedIn() {
+  const [signedIn, setSignedIn] = useState(false);
+  useEffect(() => {
+    supabase.auth.getSession().then(({ data }) => setSignedIn(!!data.session));
+    const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => setSignedIn(!!session));
+    return () => subscription.unsubscribe();
+  }, []);
+  return signedIn;
+}
+
+function SessionLink({ className, onClick }: { className: string; onClick?: () => void }) {
+  const signedIn = useSignedIn();
+  return (
+    <a href={signedIn ? "/area-do-cliente" : "/auth"} onClick={onClick} className={className}>
+      {signedIn ? "Área do cliente" : "Entrar"}
+    </a>
+  );
+}
 
 const links = [
   { href: "#praticas", label: "Práticas" },

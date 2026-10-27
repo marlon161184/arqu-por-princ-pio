@@ -10,7 +10,10 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
+import { Route as AuthRouteImport } from './routes/auth'
 import { Route as EnxovalRouteImport } from './routes/enxoval'
+import { Route as AuthenticatedAreaDoClienteRouteImport } from './routes/_authenticated/area-do-cliente'
 import { Route as ConceitoAreaDoClienteRouteImport } from './routes/conceito.area-do-cliente'
 
 const IndexRoute = IndexRouteImport.update({
@@ -18,11 +21,26 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const EnxovalRoute = EnxovalRouteImport.update({
   id: '/enxoval',
   path: '/enxoval',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedAreaDoClienteRoute =
+  AuthenticatedAreaDoClienteRouteImport.update({
+    id: '/area-do-cliente',
+    path: '/area-do-cliente',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const ConceitoAreaDoClienteRoute = ConceitoAreaDoClienteRouteImport.update({
   id: '/conceito/area-do-cliente',
   path: '/conceito/area-do-cliente',
@@ -31,30 +49,56 @@ const ConceitoAreaDoClienteRoute = ConceitoAreaDoClienteRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/enxoval': typeof EnxovalRoute
+  '/area-do-cliente': typeof AuthenticatedAreaDoClienteRoute
   '/conceito/area-do-cliente': typeof ConceitoAreaDoClienteRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
   '/enxoval': typeof EnxovalRoute
+  '/area-do-cliente': typeof AuthenticatedAreaDoClienteRoute
   '/conceito/area-do-cliente': typeof ConceitoAreaDoClienteRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
   '/enxoval': typeof EnxovalRoute
+  '/_authenticated/area-do-cliente': typeof AuthenticatedAreaDoClienteRoute
   '/conceito/area-do-cliente': typeof ConceitoAreaDoClienteRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/enxoval' | '/conceito/area-do-cliente'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/enxoval'
+    | '/area-do-cliente'
+    | '/conceito/area-do-cliente'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/enxoval' | '/conceito/area-do-cliente'
-  id: '__root__' | '/' | '/enxoval' | '/conceito/area-do-cliente'
+  to:
+    | '/'
+    | '/auth'
+    | '/enxoval'
+    | '/area-do-cliente'
+    | '/conceito/area-do-cliente'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/enxoval'
+    | '/_authenticated/area-do-cliente'
+    | '/conceito/area-do-cliente'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
   EnxovalRoute: typeof EnxovalRoute
   ConceitoAreaDoClienteRoute: typeof ConceitoAreaDoClienteRoute
 }
@@ -68,12 +112,33 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/enxoval': {
       id: '/enxoval'
       path: '/enxoval'
       fullPath: '/enxoval'
       preLoaderRoute: typeof EnxovalRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/area-do-cliente': {
+      id: '/_authenticated/area-do-cliente'
+      path: '/area-do-cliente'
+      fullPath: '/area-do-cliente'
+      preLoaderRoute: typeof AuthenticatedAreaDoClienteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
     }
     '/conceito/area-do-cliente': {
       id: '/conceito/area-do-cliente'
@@ -85,8 +150,21 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAreaDoClienteRoute: typeof AuthenticatedAreaDoClienteRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAreaDoClienteRoute: AuthenticatedAreaDoClienteRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
   EnxovalRoute: EnxovalRoute,
   ConceitoAreaDoClienteRoute: ConceitoAreaDoClienteRoute,
 }
