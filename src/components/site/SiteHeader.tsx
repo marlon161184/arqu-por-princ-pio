@@ -27,6 +27,7 @@ const links = [
   { href: "#metodo", label: "Método" },
   { href: "#produtos", label: "Produtos" },
   { href: "#fundador", label: "Fundador" },
+  { href: "#bastidores", label: "Bastidores" },
   { href: "#contato", label: "Contato" },
 ];
 
