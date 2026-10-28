@@ -48,7 +48,7 @@ h1,h2,h3,h4{font-family:'Instrument Sans',Inter,sans-serif;font-weight:600;lette
 
 /* renders 3D */
 .cv .mock img.r3{display:block;width:100%;height:auto;aspect-ratio:4/3;background:var(--concreto)}
-.card .cv{overflow:hidden}.r3dl{position:absolute;left:12px;bottom:12px;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;background:var(--carvao);color:#fff;padding:7px 9px;text-decoration:none;opacity:0;transition:opacity .15s}.cv:hover .r3dl,.r3dl:focus-visible{opacity:1}
+.card .cv{overflow:hidden}.r3dl{position:absolute;left:12px;bottom:12px;font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;background:var(--carvao);color:#fff;padding:7px 9px;text-decoration:none;border:0;cursor:pointer;opacity:1}.r3dl:hover,.r3dl:focus-visible{background:var(--ultra,#2A3DE0)}.r3dl:disabled{opacity:.6;cursor:wait}.mk{margin:10px 0 0;font-size:12px}.mk a{color:inherit;text-decoration:underline}
 .vw{position:absolute;left:12px;top:12px;display:flex;z-index:2}.vw button{font:500 10.5px 'IBM Plex Mono',monospace;letter-spacing:.14em;text-transform:uppercase;background:#fff;color:var(--carvao);border:1px solid var(--carvao);padding:7px 10px;cursor:pointer;margin-left:-1px}.vw button.on{background:var(--carvao);color:#fff}
 @media (hover:none){.r3dl{opacity:1}}
 .kc .cv .mock img.r3{aspect-ratio:4/3}
@@ -407,13 +407,33 @@ function pdfFromJpeg(jpg,wpx,hpx,wmm,hmm){const W=(wmm*72/25.4).toFixed(2),H=(hm
  const cs=`q ${W} 0 0 ${H} 0 0 cm /Im0 Do Q`;obj(5,`<< /Length ${cs.length} >>\nstream\n${cs}\nendstream`);
  const x0=len;push('xref\n0 6\n0000000000 65535 f \n');for(let i=1;i<=5;i++)push(String(off[i]).padStart(10,'0')+' 00000 n \n');push(`trailer\n<< /Size 6 /Root 1 0 R >>\nstartxref\n${x0}\n%%EOF`);
  return new Blob(parts,{type:'application/pdf'})}
-async function runDl(itId,fi,pi,o){const it=byId(itId),a=artOf(it,fi,o),p=presets(it,fi,o)[pi],base=`arque-${it.id}-${slug(faceName(it.faces[fi]))}`+(it.o&&it.o.includes('cor')?'-'+o.cor:'');
+async function makeDl(itId,fi,pi,o){const it=byId(itId),a=artOf(it,fi,o),p=presets(it,fi,o)[pi],base=`arque-${it.id}-${slug(faceName(it.faces[fi]))}`+(it.o&&it.o.includes('cor')?'-'+o.cor:'');
  const u=faceUnit(it,fi),dim=u=='mm'?`${fmtMM(a.w)}x${fmtMM(a.h)}mm`:`${a.w}x${a.h}px`;
- if(p.k=='svg')return download(new Blob([svgDoc(a,true)],{type:'image/svg+xml'}),`${base}-${dim}.svg`);
- const svg=svgDoc(a,p.bleed,p.w,p.h),c=await raster(svg,p.w,p.h,p.k=='pdf'||(!a.transp&&u=='px')?null:null);
- if(p.k=='png'){const b=await new Promise(r=>c.toBlob(r,'image/png'));return download(b,`${base}-${p.w}x${p.h}px.png`)}
+ if(p.k=='svg')return {blob:new Blob([svgDoc(a,true)],{type:'image/svg+xml'}),name:`${base}-${dim}.svg`};
+ const svg=svgDoc(a,p.bleed,p.w,p.h),c=await raster(svg,p.w,p.h,null);
+ if(p.k=='png'){const b=await new Promise(r=>c.toBlob(r,'image/png'));return {blob:b,name:`${base}-${p.w}x${p.h}px.png`}}
  const c2=document.createElement('canvas');c2.width=p.w;c2.height=p.h;const x=c2.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,p.w,p.h);x.drawImage(c,0,0);
- const jb=await new Promise(r=>c2.toBlob(r,'image/jpeg',.95)),jpg=new Uint8Array(await jb.arrayBuffer());download(pdfFromJpeg(jpg,p.w,p.h,p.mm[0],p.mm[1]),`${base}-${dim}.pdf`)}
+ const jb=await new Promise(r=>c2.toBlob(r,'image/jpeg',.95)),jpg=new Uint8Array(await jb.arrayBuffer());return {blob:pdfFromJpeg(jpg,p.w,p.h,p.mm[0],p.mm[1]),name:`${base}-${dim}.pdf`}}
+async function runDl(itId,fi,pi,o){const r=await makeDl(itId,fi,pi,o);download(r.blob,r.name)}
+/* ---- arquivo pronto: o que o botão principal baixa (peça real, nas dimensões descritas em "+") ---- */
+const crcT=(()=>{const t=[];for(let n=0;n<256;n++){let c=n;for(let k=0;k<8;k++)c=c&1?0xEDB88320^(c>>>1):c>>>1;t[n]=c>>>0}return t})();
+const crc32=u=>{let c=~0;for(let i=0;i<u.length;i++)c=crcT[(c^u[i])&255]^(c>>>8);return ~c>>>0};
+function zipBlob(files){const enc=new TextEncoder(),parts=[],cen=[];let off=0;const d=new Date(),dt=((d.getFullYear()-1980)<<9|(d.getMonth()+1)<<5|d.getDate()),tm=(d.getHours()<<11|d.getMinutes()<<5|d.getSeconds()>>1);
+ files.forEach(f=>{const n=enc.encode(f.name),c=crc32(f.data),h=new DataView(new ArrayBuffer(30));
+  h.setUint32(0,0x04034b50,true);h.setUint16(4,20,true);h.setUint16(6,0x0800,true);h.setUint16(8,0,true);h.setUint16(10,tm,true);h.setUint16(12,dt,true);h.setUint32(14,c,true);h.setUint32(18,f.data.length,true);h.setUint32(22,f.data.length,true);h.setUint16(26,n.length,true);h.setUint16(28,0,true);
+  parts.push(h.buffer,n,f.data);
+  const e=new DataView(new ArrayBuffer(46));e.setUint32(0,0x02014b50,true);e.setUint16(4,20,true);e.setUint16(6,20,true);e.setUint16(8,0x0800,true);e.setUint16(10,0,true);e.setUint16(12,tm,true);e.setUint16(14,dt,true);e.setUint32(16,c,true);e.setUint32(20,f.data.length,true);e.setUint32(24,f.data.length,true);e.setUint16(28,n.length,true);e.setUint32(42,off,true);cen.push(e.buffer,n);
+  off+=30+n.length+f.data.length});
+ const cl=cen.reduce((s,x)=>s+(x.byteLength||x.length),0),z=new DataView(new ArrayBuffer(22));z.setUint32(0,0x06054b50,true);z.setUint16(8,files.length,true);z.setUint16(10,files.length,true);z.setUint32(12,cl,true);z.setUint32(16,off,true);
+ return new Blob([...parts,...cen,z.buffer],{type:'application/zip'})}
+/* arquivo principal de cada face: px → PNG no tamanho da plataforma (foto/favicon: todos os tamanhos); mm → PDF com sangria (opaco) ou PNG transparente 300 dpi */
+function mainPlan(it,o){const out=[];it.faces.forEach((f,fi)=>{const P=presets(it,fi,o);
+ if(faceUnit(it,fi)=='px'){const pngs=P.map((p,i)=>[p,i]).filter(x=>x[0].k=='png');(it.id=='foto'?pngs:pngs.slice(0,1)).forEach(x=>out.push([fi,x[1]]))}
+ else{const i=P.findIndex(p=>p.k=='pdf');out.push([fi,i>=0?i:P.findIndex(p=>p.k=='png')])}});return out}
+async function runMain(itId,o){const it=byId(itId),plan=mainPlan(it,o),res=[];for(const [fi,pi] of plan)res.push(await makeDl(itId,fi,pi,o));
+ if(res.length==1)return download(res[0].blob,res[0].name);
+ const files=[];for(const r of res)files.push({name:r.name,data:new Uint8Array(await r.blob.arrayBuffer())});
+ download(zipBlob(files),`arque-${it.id}${it.o&&it.o.includes('cor')?'-'+o.cor:''}-${files.length}-arquivos.zip`)}
 /* ---- controles de opções ---- */
 function optsHtml(it,o,pre,lock){if(!it.o)return'';return `<div class="opts">${it.o.map(k=>{const d=OPT[k],id=`${pre}-${k}`,lk=lock&&lock[k];
  if(d.t=='text')return `<label class="f"><span>${d.l}</span><input data-it="${it.id}" data-k="${k}" value="${esc(o[k])}" maxlength="28"${lk?' disabled':''}></label>`;
@@ -422,9 +442,10 @@ function optsHtml(it,o,pre,lock){if(!it.o)return'';return `<div class="opts">${i
 function dlHtml(it,o){return `<div class="dls">${it.faces.map((f,fi)=>`<div class="dlr"><b>${esc(faceName(f))}</b><span>${presets(it,fi,o).map((p,pi)=>`<button class="dl" data-dl="${it.id}|${fi}|${pi}">${p.label}</button>`).join('')}</span></div>`).join('')}</div>`}
 function specHtml(it){const s=it.spec;return `<dl class="spec">${[['Formato',s.formato],['Sangria',s.sangria],['Material',s.material],['Arquivo',s.arquivo]].map(([k,v])=>`<div><dt>${k}</dt><dd>${v}</dd></div>`).join('')}${s.nota?`<div class="nota"><dt>Nota</dt><dd>${s.nota}</dd></div>`:''}</dl>`}
 function vwHtml(it){if(!hasTxt(it))return'';const v=STATE.view[it.id];return `<div class="vw" role="group" aria-label="Visualização"><button data-vw="${it.id}|r" class="${v=='r'?'on':''}">Render</button><button data-vw="${it.id}|a" class="${v=='a'?'on':''}">Arte editável</button></div>`}
+const mainLabel=it=>{const px=it.unit=='px'||it.faces.some((f,i)=>faceUnit(it,i)=='px');const n=mainPlan(it,STATE.opts[it.id]).length;return n>1?`↓ Baixar ${n} arquivos`:(px?'↓ Baixar PNG':(it.tr?'↓ Baixar PNG':'↓ Baixar PDF'))};
 function cardHtml(it,n){const o=STATE.opts[it.id];return `<article class="card" id="it-${it.id}"><header><b>${n}</b><h3>${it.name}</h3><span>${it.tag}</span></header>
-<div class="cv"><div class="mock">${mockHtml(it,o)}</div>${vwHtml(it)}<a class="r3dl" href="${imgSrc(it,o)}" download="arque-${it.id}-render.webp" aria-label="Baixar o render de ${esc(it.name)}">↓ Render</a><button class="plus" data-plus="${it.id}" aria-expanded="false" aria-label="Abrir especificações de ${esc(it.name)}">+</button></div>
-<div class="specwrap" hidden>${specHtml(it)}</div>${optsHtml(it,o,'c')}<div class="dlwrap">${dlHtml(it,o)}</div></article>`}
+<div class="cv"><div class="mock">${mockHtml(it,o)}</div>${vwHtml(it)}<button class="r3dl" data-main="${it.id}" aria-label="Baixar o arquivo pronto de ${esc(it.name)}">${mainLabel(it)}</button><button class="plus" data-plus="${it.id}" aria-expanded="false" aria-label="Abrir especificações de ${esc(it.name)}">+</button></div>
+<div class="specwrap" hidden>${specHtml(it)}<p class="mk"><a href="${imgSrc(it,o)}" download="arque-${it.id}-mockup.webp">Baixar só a imagem do mockup (apresentação, não é o arquivo de produção)</a></p></div>${optsHtml(it,o,'c')}<div class="dlwrap">${dlHtml(it,o)}</div></article>`}
 /* ---- página ---- */
 function renderPage(){
  let n=0;const idx=COLS.map(c=>{const its=ITEMS.filter(i=>i.col==c.id);return `<div class="ix"><div class="lab"><a href="#c-${c.id}">${c.n} · ${c.name}</a></div><ol>${its.map(i=>`<li><a href="#it-${i.id}"><b>${String(++n).padStart(2,'0')}</b><span>${i.name}</span><em>${i.dims}</em></a></li>`).join('')}${c.id=='onboarding'?`<li><a href="#c-onboarding"><b>—</b><span>${KIT.length} peças em 5 níveis</span><em>1.000 pontos</em></a></li>`:''}</ol></div>`}).join('');
@@ -460,10 +481,11 @@ function renderKit(){const t=tier(),P=pts(),o=kitOpts(),nt=TIERS[t+1],pct=Math.m
  <div class="tiers">${tiers}</div><p class="lab sub">Personalize o seu kit</p>${ctrl}<p class="lab sub">O seu kit · ${KIT.filter(k=>t>=k.t).length} de ${KIT.length} peças liberadas</p><div class="kgrid">${cards}</div>
  <p class="note">Proposta de regra: pontos, níveis e itens podem ser ajustados com a política de onboarding. As peças marcadas como padrão são entregues a todo colaborador, independente da pontuação.</p>`}
 /* ---- eventos ---- */
-function refreshCard(id,k){const it=byId(id),o=STATE.opts[id],c=$('#it-'+id);if(!c)return;if(k&&TXT.includes(k)&&STATE.view[id]!='a'){STATE.view[id]='a';const w=$('.vw',c);if(w)w.outerHTML=vwHtml(it)}$('.mock',c).innerHTML=mockHtml(it,o);const dl=$('.r3dl',c);if(dl)dl.href=imgSrc(it,o);$('.dlwrap',c).innerHTML=dlHtml(it,o)}
+function refreshCard(id,k){const it=byId(id),o=STATE.opts[id],c=$('#it-'+id);if(!c)return;if(k&&TXT.includes(k)&&STATE.view[id]!='a'){STATE.view[id]='a';const w=$('.vw',c);if(w)w.outerHTML=vwHtml(it)}$('.mock',c).innerHTML=mockHtml(it,o);const dl=$('.r3dl',c);if(dl)dl.textContent=mainLabel(it);const mk=$('.mk a',c);if(mk)mk.href=imgSrc(it,o);$('.dlwrap',c).innerHTML=dlHtml(it,o)}
 function bind(){document.addEventListener('click',e=>{
  const pl=e.target.closest('[data-plus]');if(pl){const c=$('#it-'+pl.dataset.plus),w=$('.specwrap',c),op=w.hidden;w.hidden=!op;pl.setAttribute('aria-expanded',op);pl.textContent=op?'×':'+';sendH();return}
  const ch=e.target.closest('.chip[data-it]');if(ch&&!ch.disabled){STATE.opts[ch.dataset.it][ch.dataset.k]=ch.dataset.v;const c=ch.closest('.card');$$('.chip[data-k="'+ch.dataset.k+'"]',c).forEach(x=>x.classList.toggle('on',x==ch));refreshCard(ch.dataset.it,ch.dataset.k);return}
+ const mn=e.target.closest('[data-main]');if(mn){const t=mn.textContent;mn.textContent='Gerando…';mn.disabled=true;runMain(mn.dataset.main,STATE.opts[mn.dataset.main]).catch(err=>console.error(err)).finally(()=>{mn.textContent=t;mn.disabled=false});return}
  const dl=e.target.closest('[data-dl]');if(dl){const[id,fi,pi]=dl.dataset.dl.split('|'),kc=dl.closest('[data-kdl]'),o=kc?Object.assign(kitOpts(),kc.dataset.kdl=='tee2'?{cor:tier()>=2?(KS.cor=='carvao'?'ultramar':KS.cor):'carvao'}:{}):STATE.opts[id];const t=dl.textContent;dl.textContent='Gerando…';runDl(id,+fi,+pi,o).catch(err=>console.error(err)).finally(()=>dl.textContent=t);return}
  const vw=e.target.closest('[data-vw]');if(vw){const[id,v]=vw.dataset.vw.split('|');STATE.view[id]=v;const c=$('#it-'+id);$('.vw',c).outerHTML=vwHtml(byId(id));$('.mock',c).innerHTML=mockHtml(byId(id),STATE.opts[id]);return}
  const tk=e.target.closest('[data-trk]');if(tk){KS.done[tk.dataset.trk]=!KS.done[tk.dataset.trk];saveKit();return}
