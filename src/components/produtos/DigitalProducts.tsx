@@ -34,7 +34,7 @@ export function DigitalProducts() {
         </div>
         <section aria-labelledby="clientes-title" className="my-16">
           <p className="label-mono text-ultramar-claro">05.3 Clientes</p>
-          <h3 id="clientes-title" className="h3-style mt-6 text-concreto">Quem constrói conosco.</h3>
+          <h3 id="clientes-title" className="h3-style mt-6 text-white">Quem constrói conosco.</h3>
           <div className="mt-8">
             {clientes.map((grupo) => <div key={grupo.id} className="grid-12 gap-y-8 border-t border-linha-escura py-10 lg:py-12" data-cliente-grupo={grupo.id}>
               <div className="col-span-12 flex min-w-0 flex-col items-start gap-8 lg:col-span-4">
@@ -42,8 +42,8 @@ export function DigitalProducts() {
               </div>
               <dl className="col-span-12 min-w-0 lg:col-span-8">
                 {grupo.itens.map((item) => <div key={item.nome} className="border-b border-linha-escura py-5 first:pt-0">
-                  <dt className="text-lg font-semibold text-concreto">{item.nome}</dt>
-                  <dd className="mt-2 max-w-[60ch] text-nevoa">{item.descricao}</dd>
+                  <dt className="text-lg font-semibold text-white">{item.nome}</dt>
+                  <dd className="mt-2 max-w-[60ch] text-white">{item.descricao}</dd>
                 </div>)}
               </dl>
             </div>)}
