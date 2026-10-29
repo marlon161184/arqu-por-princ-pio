@@ -21,7 +21,8 @@
 # Enxoval de marca · Versão 1.0
 - [x] Salvar o HTML original byte a byte em `public/enxoval/enxoval.html` e excluir as sete pranchas e o render antigos.
 - [x] Reduzir `/enxoval` a redirecionamento no cliente com link visível e apontar o rodapé diretamente ao HTML.
-- [x] Registrar geração externa com um motor vetorial único a partir dos tokens: 34 peças em Papelaria, Sinalização, Clubinho Arquê, Digital e social, Kit de onboarding gamificado e Kit cliente novo, com SVG, PNG e PDF nos tamanhos finais.
+- [x] Registrar geração externa com um motor vetorial único a partir dos tokens: 34 peças em 6 coleções — Papelaria, Sinalização, Clubinho Arquê, Digital e social, Kit de onboarding e Kit cliente novo.
+- [x] Registrar que o botão principal baixa o arquivo real (PNG, PDF ou ZIP nas dimensões descritas); a imagem do mockup fica como link secundário no "+".
 - [x] Verificar acesso, downloads, testes e preservação do PDF do brandbook.
 
 # Seção 05 Produtos
@@ -43,6 +44,7 @@
 - [x] Verificar testes, links e ausência de scroll horizontal em 375px e 1280px, sem publicar.
 
 # Clientes · Produtos por empresa
+- [x] Registrar que a Chlorum fica fora do site e que 05.3 Clientes tem autorização de Newe e Hyndra; título, nomes e descrições em branco puro (#FFFFFF), sem opacidade ou filtros, com label preservado e logos sem opacity, filter ou mix-blend.
 - [x] Substituir logos negativos pelos anexos brancos originais como Lovable Assets.
 - [x] Organizar três grupos e 12 itens com descrições revisadas em dados tipados, preservando 05.2 e fechamento.
 - [x] Verificar 25 testes, layout em 375/1280px sem rolagem horizontal, logos íntegros, botão de contato e assinatura do enxoval intacta, sem publicar.
