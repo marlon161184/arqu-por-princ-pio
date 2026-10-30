@@ -7,6 +7,7 @@ import { DigitalProducts } from "@/components/produtos/DigitalProducts";
 import { SiteFooter } from "@/components/site/SiteFooter";
 import { ArqueWordmark } from "@/components/ArqueWordmark";
 import kitCliente from "@/assets/kitcliente.webp.asset.json";
+import marlonFoto from "@/assets/marlon-fundador.webp.asset.json";
 
 const TITLE = "Arquê — Por princípio.";
 const DESC = "Consultoria de estratégia, pessoas, marcas e negócios. Por princípio.";
@@ -184,7 +185,7 @@ function Index() {
         {/* Fundador */}
         <section id="fundador" aria-labelledby="fundador-title" className="bg-surface-alt">
           <div className="container-x grid-12 gap-y-12 py-24 lg:py-32">
-            <div className="col-span-12 sm:col-span-8 lg:col-span-5"><FounderPortrait /></div>
+            <div className="col-span-12 sm:col-span-8 lg:col-span-5"><FounderPortrait src={marlonFoto.url} alt="Marlon Silva, fundador da Arquê" width={1087} height={1446} /></div>
             <Reveal className="col-span-12 flex flex-col justify-end lg:col-span-6 lg:col-start-7">
               <Label>06 Fundador</Label>
               <h2 id="fundador-title" className="h1-style mt-6 text-ink">Marlon Silva</h2>

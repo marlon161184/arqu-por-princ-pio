@@ -51,3 +51,6 @@
 
 # Produtos · Índice editorial
 - [x] Atualizar 05.1 com 20 produtos (12 digitais), descrições expansíveis, quatro colunas alinhadas e sanfona de frentes no celular; acrescentar o quarto parágrafo de 05.2, verificar 28 testes e screenshots em 1440/390px sem desalinhamento ou rolagem horizontal, preservando 05.3 e o Enxoval, sem publicar.
+
+# Fundador · Foto do Marlon
+- [x] Incluir a foto marlon-fundador.webp (Lovable Asset) no FounderPortrait com o monograma em quadrado carvão rente ao canto inferior esquerdo, fallback do monograma grande, testes e verificação em 1440/390px, sem publicar.
