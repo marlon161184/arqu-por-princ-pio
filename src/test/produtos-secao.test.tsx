@@ -1,4 +1,4 @@
-import { cleanup, render, screen, within } from "@testing-library/react";
+import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import { DigitalProducts } from "@/components/produtos/DigitalProducts";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -16,26 +16,47 @@ describe("Seção 05 Produtos", () => {
     expect(document.getElementById("produtos")).not.toBeNull();
   });
 
-  it("lists four fronts with four products each", () => {
+  it("lists four fronts with five products each", () => {
     expect(frentes.map((f) => f.name)).toEqual(["Estratégia", "Pessoas", "Marcas", "Negócios"]);
     render(<DigitalProducts />);
     for (const f of frentes) {
-      expect(within(screen.getByRole("list", { name: `Produtos de ${f.name}` })).getAllByRole("listitem")).toHaveLength(4);
+      expect(within(screen.getByRole("list", { name: `Produtos de ${f.name}` })).getAllByRole("listitem")).toHaveLength(5);
     }
   });
 
-  it("keeps the sixteen consultancy products without digital-version navigation", () => {
+  it("keeps the twenty consultancy products without digital-version navigation", () => {
     render(<DigitalProducts />);
-    expect(frentes.flatMap((frente) => frente.produtos)).toHaveLength(16);
+    expect(frentes.flatMap((frente) => frente.produtos)).toHaveLength(20);
     for (const frente of frentes) {
       expect(within(screen.getByRole("list", { name: `Produtos de ${frente.name}` })).queryAllByRole("link")).toHaveLength(0);
     }
   });
 
-  it("removes digital product accordions and retains the contact invitation", () => {
+  it("keeps exactly the twelve designated digital products", () => {
+    expect(frentes.flatMap((frente) => frente.produtos).filter((produto) => produto.digital).map((produto) => produto.name)).toEqual([
+      "OKRs e desdobramento de metas", "Escritório de transformação", "Processos e indicadores",
+      "Cultura e proposta de valor ao colaborador", "Cargos, salários e remuneração estratégica",
+      "Universidade corporativa e onboarding", "People analytics", "Brandbook e design system",
+      "Enxoval e aplicação de marca", "Estratégia comercial e pipeline", "Funil e nutrição de clientes", "Painel de performance",
+    ]);
+  });
+
+  it("starts with the first mobile front open and opens only one at a time", () => {
     render(<DigitalProducts />);
-    expect(screen.queryAllByRole("button", { expanded: false })).toHaveLength(0);
+    const estrategia = screen.getByRole("button", { name: "Estratégia" });
+    const pessoas = screen.getByRole("button", { name: "Pessoas" });
+    expect(estrategia).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getAllByRole("button", { expanded: true })).toHaveLength(1);
+    fireEvent.click(pessoas);
+    expect(estrategia).toHaveAttribute("aria-expanded", "false");
+    expect(pessoas).toHaveAttribute("aria-expanded", "true");
+    expect(screen.getAllByRole("button", { expanded: true })).toHaveLength(1);
+    fireEvent.click(pessoas);
     expect(screen.queryAllByRole("button", { expanded: true })).toHaveLength(0);
+  });
+
+  it("retains the contact invitation without restoring suite navigation", () => {
+    render(<DigitalProducts />);
     expect(screen.getByRole("link", { name: "Conversar sobre um produto" })).toHaveAttribute("href", "#contato");
   });
 
