@@ -41,6 +41,12 @@ describe("Seção 05 Produtos", () => {
     ]);
   });
 
+  it("shows the digital legend and a badge for each digital product", () => {
+    render(<DigitalProducts />);
+    expect(screen.getByText("sistema que segue evoluindo com você")).toBeInTheDocument();
+    expect(screen.getAllByText("Digital")).toHaveLength(13);
+  });
+
   it("starts with the first mobile front open and opens only one at a time", () => {
     render(<DigitalProducts />);
     const estrategia = screen.getByRole("button", { name: "Estratégia" });
