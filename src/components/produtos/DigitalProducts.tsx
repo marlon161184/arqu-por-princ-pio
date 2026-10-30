@@ -1,9 +1,11 @@
+import { useState } from "react";
 import { clientes } from "@/data/clientes";
 import { frentes } from "@/data/produtosPorFrente";
 import { Button } from "@/components/ui/button";
 import { Chevron } from "@/components/site/primitives";
 
 export function DigitalProducts() {
+  const [frenteAberta, setFrenteAberta] = useState<number | null>(0);
   return <section id="produtos" aria-labelledby="produtos-title">
     <div className="bg-surface-alt">
       <div className="container-x py-24 lg:py-32">
@@ -11,16 +13,30 @@ export function DigitalProducts() {
         <p className="measure mt-4 text-ink-muted">Produto é o que entregamos como consultoria, por frente. Produto digital é o sistema que construímos.</p>
         <p className="label-mono mt-16 text-brand">05.1 Por frente</p>
         <h2 id="produtos-title" className="h1-style mt-6 max-w-[22ch] text-ink">O que contratar, frente a frente.</h2>
-        <ul className="mt-16 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
-          {frentes.map((frente) => <li key={frente.name} className="border-t-2 border-carvao pt-6">
-            <h3 className="h3-style text-ink">{frente.name}</h3>
-            <ul className="mt-6 space-y-5" aria-label={`Produtos de ${frente.name}`}>
-              {frente.produtos.map((p) => <li key={p.name} className="min-w-0">
-                <p className="text-ink">{p.name}</p>
+        <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-ink-muted"><span className="product-digital-badge">Digital</span><span>sistema que segue evoluindo com você</span></p>
+        <div className="products-menu mt-16">
+          {frentes.map((frente, frenteIndex) => <div key={frente.name} className="products-front min-w-0 border-t-2 border-carvao">
+            <h3 className="products-front-heading">
+              <span className="h3-style hidden text-ink lg:block">{frente.name}</span>
+              <Button variant="ghost" className="products-front-toggle lg:hidden" aria-expanded={frenteAberta === frenteIndex} aria-controls={`produtos-frente-${frenteIndex}`} onClick={() => setFrenteAberta(frenteAberta === frenteIndex ? null : frenteIndex)}>
+                <span className="h3-style">{frente.name}</span><span className="product-indicator" aria-hidden="true">{frenteAberta === frenteIndex ? "−" : "+"}</span>
+              </Button>
+            </h3>
+            <ul id={`produtos-frente-${frenteIndex}`} className={frenteAberta === frenteIndex ? "contents" : "hidden lg:contents"} aria-label={`Produtos de ${frente.name}`}>
+              {frente.produtos.map((p, produtoIndex) => <li key={p.name} className="min-w-0 border-t border-rule">
+                <details className="product-entry">
+                  <summary className="product-summary">
+                    <span className="product-number text-ink-muted" aria-hidden="true">{frenteIndex + 1}.{produtoIndex + 1}</span>
+                    <span className="product-name text-ink">{p.name}</span>
+                    {p.digital && <span className="product-digital-badge">Digital</span>}
+                    <span className="product-indicator product-entry-indicator text-ink-muted" aria-hidden="true" />
+                  </summary>
+                  <p className="product-description text-ink-muted">{p.descricao}</p>
+                </details>
               </li>)}
             </ul>
-          </li>)}
-        </ul>
+          </div>)}
+        </div>
       </div>
     </div>
     <div id="ia-inovacao" className="section-dark" aria-labelledby="ia-inovacao-title" role="region">
@@ -31,6 +47,7 @@ export function DigitalProducts() {
           <p>Estratégia, cultura e governança costumam parar no documento. Nós as levamos até a tela que alguém usa na segunda-feira.</p>
           <p>Arquitetamos, com IA e ferramentas no-code, sistemas de gestão, governança e people analytics. Não são vitrines de tecnologia. São iniciativas, governanças e movimentos que ganharam forma operacional.</p>
           <p>Como cada sistema nasce: parte de um problema de gestão, passa pelo método e termina em um sistema em uso.</p>
+          <p>Depois da entrega, o sistema continua. Versões, ajustes e novas funções acompanham a empresa, e os dados e a documentação são sempre do cliente.</p>
         </div>
         <section aria-labelledby="clientes-title" className="my-16">
           <p className="label-mono text-ultramar-claro">05.3 Clientes</p>
