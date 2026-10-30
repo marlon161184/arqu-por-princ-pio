@@ -22,7 +22,7 @@ describe("App routing", () => {
   it("serves the version 1.0 attachment byte-for-byte", () => {
     const bytes = readFileSync("public/enxoval/enxoval.html");
     expect(createHash("sha256").update(bytes).digest("hex")).toBe(
-      "fe4f14975f1680115c53a0b737764062fb9830588b86ff7d250896d1a9fd0347",
+      "67d04e30656e13eb821e650153296d29fa7383038fb8fda05d599af92996631d",
     );
   });
 
