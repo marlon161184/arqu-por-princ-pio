@@ -50,4 +50,4 @@
 - [x] Verificar 25 testes, layout em 375/1280px sem rolagem horizontal, logos íntegros, botão de contato e assinatura do enxoval intacta, sem publicar.
 
 # Produtos · Índice editorial
-- [ ] Atualizar 05.1 com 20 produtos (12 digitais), descrições expansíveis, quatro colunas alinhadas e sanfona de frentes no celular; acrescentar o quarto parágrafo de 05.2, testar e verificar screenshots em 1440/390px, sem publicar.
+- [x] Atualizar 05.1 com 20 produtos (12 digitais), descrições expansíveis, quatro colunas alinhadas e sanfona de frentes no celular; acrescentar o quarto parágrafo de 05.2, verificar 28 testes e screenshots em 1440/390px sem desalinhamento ou rolagem horizontal, preservando 05.3 e o Enxoval, sem publicar.
