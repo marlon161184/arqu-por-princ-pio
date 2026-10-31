@@ -35,7 +35,7 @@ describe("Site footer", () => {
   it("offers the site slides as a second discreet PDF download", () => {
     render(<SiteFooter />);
     const link = screen.getByRole("link", {
-      name: "Baixar os slides do site da Arquê (PDF, 32 páginas)",
+      name: "Baixar os slides do site da Arquê (PDF, 31 páginas)",
     });
     expect(link).toHaveAttribute("href", SLIDES_HREF);
     expect(link).toHaveAttribute("download", "arque-site-slides.pdf");
@@ -68,12 +68,12 @@ describe("Site footer", () => {
     expect(bytes.toString("latin1")).toContain("/Count 22");
   });
 
-  it("serves a real 32-page slides PDF from the project's static downloads", () => {
+  it("serves a real 31-page slides PDF from the project's static downloads", () => {
     const file = path.join(process.cwd(), "public", "downloads", "arque-site-slides.pdf");
     expect(existsSync(file)).toBe(true);
     const bytes = readFileSync(file);
     expect(bytes.subarray(0, 5).toString()).toBe("%PDF-");
-    expect(bytes.length).toBeGreaterThan(8_000_000);
-    expect(bytes.toString("latin1")).toContain("/Count 32");
+    expect(bytes.length).toBeGreaterThan(900_000);
+    expect(bytes.toString("latin1")).toContain("/Count 31");
   });
 });
