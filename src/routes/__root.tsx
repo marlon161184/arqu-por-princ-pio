@@ -74,6 +74,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "description", content: "Consultoria de estratégia, pessoas, marcas e negócios. Por princípio." },
       { property: "og:site_name", content: "Arquê" },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://arqueporprincipio.com.br/" },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [

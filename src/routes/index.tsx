@@ -20,16 +20,18 @@ export const Route = createFileRoute("/")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://arqueporprincipio.com.br/" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
     ],
-    links: [{ rel: "canonical", href: "/" }],
+    links: [{ rel: "canonical", href: "https://arqueporprincipio.com.br/" }],
     scripts: [{
       type: "application/ld+json",
       children: JSON.stringify({
         "@context": "https://schema.org", "@type": "Organization",
         name: "Arquê", legalName: "MBS DHO Ltda", founder: { "@type": "Person", name: "Marlon Silva" }, description: DESC,
+        url: "https://arqueporprincipio.com.br", email: "arque@arqueporprincipio.com.br",
       }),
     }],
   }),
@@ -256,6 +258,15 @@ function Index() {
               <Label className="text-marfim">08 Contato</Label>
               <h2 id="contato-title" className="display-l mt-6 text-branco">Vamos começar pelo princípio.</h2>
               <p className="measure mt-6 text-ultramar-tint">Conte o desafio em poucas linhas. Respondemos por e-mail.</p>
+              <div className="mt-8">
+                <Label className="text-marfim">Ou escreva para</Label>
+                <a
+                  href="mailto:arque@arqueporprincipio.com.br"
+                  className="mt-2 inline-block text-branco underline-offset-4 hover:underline focus-visible:underline focus-visible:outline-none"
+                >
+                  arque@arqueporprincipio.com.br
+                </a>
+              </div>
             </Reveal>
             <div className="relative col-span-12 lg:col-span-5 lg:col-start-8"><ContactForm /></div>
           </div>
