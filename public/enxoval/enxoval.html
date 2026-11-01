@@ -95,15 +95,15 @@ const ART={};
 ART.timbrado=o=>{const w=210,h=297,b=3;let s=BG(w,h,b,C.branco);
  s+=WM(20,17,9,C.carvao,C.ultra)+T(190,24,'[DATA]',{f:'m',s:2.6,a:'end',c:C.grafite})+R(20,52,24,1.2,C.carvao);
  [[62,170],[67,170],[72,120],[84,170],[89,170],[94,140],[106,170],[111,90]].forEach(([y,l])=>s+=R(20,y,l,1.4,C.nevoa));
- s+=R(20,277,170,.25,C.nevoa)+T(20,283,BRAND.desc,{f:'m',s:2.2,c:C.grafite})+T(190,283,'[EMAIL]@ARQUE.COM.BR',{f:'m',s:2.2,a:'end',c:C.grafite});
+ s+=R(20,277,170,.25,C.nevoa)+T(20,283,BRAND.desc,{f:'m',s:2.2,c:C.grafite})+T(190,283,'ARQUE@ARQUEPORPRINCIPIO.COM.BR',{f:'m',s:2.2,a:'end',c:C.grafite});
  return A(w,h,b,'mm',s)};
 ART.envelope=o=>{const w=229,h=114,b=3;let s=BG(w,h,b,C.branco)+WM(14,13,8,C.carvao,C.ultra)+T(14,102,'POR PRINCÍPIO.',{f:'m',s:2.6,c:C.grafite});
  [[78,70],[84,70],[90,44]].forEach(([y,l])=>s+=R(150,y,l,1.3,C.nevoa));return A(w,h,b,'mm',s)};
 const CARD={
  m1f:o=>{const w=90,h=50,b=3;return A(w,h,b,'mm',BG(w,h,b,C.concreto)+WM(7,7,5.4,C.carvao,C.ultra)+T(7,38,o.nome,{f:'d',s:4.6})+T(7,43.2,o.cargo,{f:'m',s:2.2,c:C.grafite}))},
- m1v:o=>{const w=90,h=50,b=3;return A(w,h,b,'mm',BG(w,h,b,C.carvao)+MO(7,6,9,C.branco,C.ultraC)+T(7,33,'[TELEFONE]',{s:2.9,c:C.concreto})+T(7,38,'[EMAIL]@arque.com.br',{s:2.9,c:C.concreto})+T(7,44.5,BRAND.desc,{f:'m',s:1.8,c:C.ultraC}))},
+ m1v:o=>{const w=90,h=50,b=3;return A(w,h,b,'mm',BG(w,h,b,C.carvao)+MO(7,6,9,C.branco,C.ultraC)+T(7,33,'[TELEFONE]',{s:2.9,c:C.concreto})+T(7,38,'arque@arqueporprincipio.com.br',{s:2.9,c:C.concreto})+T(7,44.5,BRAND.desc,{f:'m',s:1.8,c:C.ultraC}))},
  m2f:o=>{const w=90,h=50,b=3;return A(w,h,b,'mm',BG(w,h,b,C.ultra)+WM(7,7,5.4,C.branco,C.branco)+T(7,38,o.nome,{f:'d',s:4.6,c:C.branco})+T(7,43.2,o.cargo,{f:'m',s:2.2,c:C.marfim}))},
- m2v:o=>{const w=90,h=50,b=3;return A(w,h,b,'mm',BG(w,h,b,C.branco)+MO(7,6,9,C.carvao,C.ultra)+T(7,33,'[TELEFONE]',{s:2.9})+T(7,38,'[EMAIL]@arque.com.br',{s:2.9})+T(7,44.5,BRAND.desc,{f:'m',s:1.8,c:C.ultra}))}};
+ m2v:o=>{const w=90,h=50,b=3;return A(w,h,b,'mm',BG(w,h,b,C.branco)+MO(7,6,9,C.carvao,C.ultra)+T(7,33,'[TELEFONE]',{s:2.9})+T(7,38,'arque@arqueporprincipio.com.br',{s:2.9})+T(7,44.5,BRAND.desc,{f:'m',s:1.8,c:C.ultra}))}};
 ART.cartao=(o,i)=>CARD[['m1f','m1v','m2f','m2v'][i]](o);
 const CRACHA=[
  o=>{const w=54,h=85.6,b=3;let s=BG(w,h,b,C.branco)+R(-b,-b,w+2*b,36+b,C.ultra)+R(20,3.2,14,1.6,C.branco,{op:.9})+WM(7,10,5,C.branco,C.branco)+R(7,22,22,28,C.nevoa)+T(18,37,'FOTO',{f:'m',s:2,a:'middle',c:C.grafite});
@@ -198,7 +198,7 @@ ART.post=(o,i)=>{ if(i==0){const w=1080,h=1350;return A(w,h,0,'px',R(0,0,w,h,C.b
  if(i==1){const w=1080,h=1080;return A(w,h,0,'px',R(0,0,w,h,C.carvao)+T(80,110,'ARQUÊ',{f:'m',s:24,c:C.ultraC})+TL(80,760,['Estrutura é a forma','que o princípio','assume.'],{f:'d',s:96,c:C.branco,lh:100}))}
  if(i==2){const w=1080,h=1920;let s=R(0,0,w,h,C.ultra)+TL(80,940,['Uma ideia','por tela.'],{f:'d',s:128,c:C.branco,lh:130})+T(80,1060,'POR PRINCÍPIO.',{f:'m',s:26,c:C.marfim});if(o.guides)s+=R(0,250,w,1420,'none',{st:C.branco,sw:3,da:'12 10'})+T(540,130,'250 PX LIVRES',{f:'m',s:22,a:'middle',c:C.branco})+T(540,1810,'250 PX LIVRES',{f:'m',s:22,a:'middle',c:C.branco});return A(w,h,0,'px',s)}
  const w=1080,h=1920;let s=R(0,0,w,h,C.carvao)+WM(80,380,44,C.branco,C.ultraC)+TL(80,960,['O título da capa','fica no centro.'],{f:'d',s:112,c:C.branco,lh:116});if(o.guides)s+=R(0,285,w,1350,'none',{st:C.ultraC,sw:3,da:'12 10'})+T(540,260,'GRID 3:4',{f:'m',s:22,a:'middle',c:C.ultraC});return A(w,h,0,'px',s)};
-ART.assinatura=o=>{const w=600,h=150;return A(w,h,0,'px',R(0,0,w,h,C.branco)+WM(0,26,36,C.carvao,C.ultra)+R(150,24,2,100,C.ultra)+T(176,52,o.nome,{f:'d',s:24})+T(176,76,o.cargo,{f:'m',s:11,c:C.grafite})+T(176,102,'[TELEFONE]  ·  [EMAIL]@arque.com.br',{s:13,c:C.carvao})+T(176,124,BRAND.desc,{f:'m',s:9,c:C.ultra}))};
+ART.assinatura=o=>{const w=600,h=150;return A(w,h,0,'px',R(0,0,w,h,C.branco)+WM(0,26,36,C.carvao,C.ultra)+R(150,24,2,100,C.ultra)+T(176,52,o.nome,{f:'d',s:24})+T(176,76,o.cargo,{f:'m',s:11,c:C.grafite})+T(176,102,'[TELEFONE]  ·  arque@arqueporprincipio.com.br',{s:13,c:C.carvao})+T(176,124,BRAND.desc,{f:'m',s:9,c:C.ultra}))};
 const WALL=cor=>cor=='ultramar'?{bg:C.ultra,ch:C.branco,ink:C.branco,acc:C.branco,mut:C.marfim}:cor=='concreto'?{bg:C.concreto,ch:C.ultra,ink:C.carvao,acc:C.ultra,mut:C.grafite}:{bg:C.carvao,ch:C.ultraC,ink:C.branco,acc:C.ultraC,mut:C.nevoa};
 ART.wallpaper=(o,i)=>{const t=WALL(o.cor=='branco'?'concreto':o.cor);
  if(i==0){const w=3840,h=2160;return A(w,h,0,'px',R(0,0,w,h,t.bg)+PL([[1500,2300],[2420,1380],[3340,2300]],t.ch,420)+WM(3100,150,100,t.ink,t.acc)+T(150,2000,'POR PRINCÍPIO.',{f:'m',s:40,c:t.mut}))}
@@ -209,7 +209,7 @@ ART.slide=(o,i)=>{const w=1920,h=1080;
  if(i==0)return A(w,h,0,'px',R(0,0,w,h,C.ultra)+WM(120,100,50,C.branco,C.branco)+T(120,860,'Título da proposta',{f:'d',s:130,c:C.branco})+T(120,960,'[CLIENTE]  ·  [DATA]',{f:'m',s:26,c:C.marfim}));
  if(i==1)return A(w,h,0,'px',R(0,0,w,h,C.carvao)+T(120,150,'02',{f:'m',s:28,c:C.ultraC})+R(120,200,1680,2,C.linha)+T(120,900,'Título da seção',{f:'d',s:140,c:C.branco}));
  if(i==2){let s=R(0,0,w,h,C.branco)+T(120,150,'SEÇÃO 02',{f:'m',s:24,c:C.ultra})+T(120,300,'O título afirma a conclusão.',{f:'d',s:96});[0,1,2].forEach(k=>{const x=120+k*580;s+=R(x,560,520,5,C.carvao)+R(x,600,520,2,C.nevoa)+R(x,640,500,2,C.nevoa)+R(x,680,430,2,C.nevoa)+R(x-20,560,2,400,C.nevoa)});return A(w,h,0,'px',s)}
- return A(w,h,0,'px',R(0,0,w,h,C.concreto)+WM(120,100,50,C.carvao,C.ultra)+T(120,640,'Por princípio.',{f:'d',s:130})+T(120,760,'[EMAIL]@ARQUE.COM.BR',{f:'m',s:26,c:C.grafite}))};
+ return A(w,h,0,'px',R(0,0,w,h,C.concreto)+WM(120,100,50,C.carvao,C.ultra)+T(120,640,'Por princípio.',{f:'d',s:130})+T(120,760,'ARQUE@ARQUEPORPRINCIPIO.COM.BR',{f:'m',s:26,c:C.grafite}))};
 
 /* ===== Mockups planos (mesma linguagem para todas as peças): viewBox 600×440, sem sombra, cantos retos ===== */
 let MW=600,MH=440;
