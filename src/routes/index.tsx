@@ -30,7 +30,7 @@ export const Route = createFileRoute("/")({
       type: "application/ld+json",
       children: JSON.stringify({
         "@context": "https://schema.org", "@type": "Organization",
-        name: "Arquê", legalName: "MBS DHO Ltda", founder: { "@type": "Person", name: "Marlon Silva" }, description: DESC,
+        name: "Arquê", legalName: "MBS Desenvolvimento Humano Organizacional Ltda", taxID: "50.036.577/0001-21", founder: { "@type": "Person", name: "Marlon Silva" }, description: DESC,
         url: "https://arqueporprincipio.com.br", email: "arque@arqueporprincipio.com.br",
       }),
     }],
