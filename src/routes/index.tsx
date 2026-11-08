@@ -227,7 +227,7 @@ function Index() {
                 </div>
                 <div aria-hidden="true" className="mt-5 flex aspect-[4/3] justify-center overflow-hidden bg-surface-alt">
                   <div className="mt-8 h-[440px] w-[300px] max-w-[calc(100%-32px)] shrink-0 border border-carvao bg-branco p-6 text-carvao [--wm-accent:var(--carvao)]">
-                    <ArqueWordmark className="h-auto w-16" />
+                    <ArqueWordmark optical className="h-auto w-16" />
                     <p className="label-mono mt-6 text-grafite">Olá, Helena · Empresa Exemplo Logística</p>
                     <p className="h3-style mt-4">2 projetos em andamento.</p>
                     <div className="mt-6 border border-carvao p-3">

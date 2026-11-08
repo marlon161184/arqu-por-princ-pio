@@ -89,7 +89,7 @@ function AuthPage() {
     <main className="section-dark min-h-screen">
       <div className="container-x flex h-[72px] items-center justify-between border-b border-linha-escura">
         <a href="/" className="flex min-h-11 items-center text-branco [--wm-accent:var(--ultramar-claro)]" aria-label="Voltar ao site">
-          <ArqueWordmark style={{ height: 22, width: "auto" }} />
+          <ArqueWordmark optical style={{ height: 22, width: "auto" }} />
         </a>
         <a href="/" className="label-mono inline-flex min-h-11 items-center gap-2 text-nevoa underline-offset-4 hover:text-branco hover:underline">
           Voltar ao site

@@ -15,12 +15,12 @@ export const Route = createFileRoute("/conceito/area-do-cliente")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
-      { property: "og:url", content: "/conceito/area-do-cliente" },
+      { property: "og:url", content: "https://arqueporprincipio.com.br/conceito/area-do-cliente" },
       { name: "twitter:card", content: "summary" },
       { name: "twitter:title", content: TITLE },
       { name: "twitter:description", content: DESC },
     ],
-    links: [{ rel: "canonical", href: "/conceito/area-do-cliente" }],
+    links: [{ rel: "canonical", href: "https://arqueporprincipio.com.br/conceito/area-do-cliente" }],
   }),
   component: ClientConceptPage,
 });
@@ -30,7 +30,7 @@ function ClientConceptPage() {
     <>
       <header className="sticky top-0 z-40 border-b border-rule bg-surface">
         <div className="container-x flex h-[72px] items-center justify-between">
-          <Link to="/" className="flex min-h-11 items-center text-carvao [--wm-accent:var(--ultramar)]" aria-label="Arquê · Voltar ao site"><ArqueWordmark className="h-[22px] w-auto" /></Link>
+          <Link to="/" className="flex min-h-11 items-center text-carvao [--wm-accent:var(--ultramar)]" aria-label="Arquê · Voltar ao site"><ArqueWordmark optical className="h-[22px] w-auto" /></Link>
           <Link to="/" className="label-mono inline-flex min-h-11 items-center gap-2 text-brand"><Chevron rotate={270} /> Voltar ao site</Link>
         </div>
       </header>
@@ -56,7 +56,7 @@ function ClientConceptPage() {
       </main>
       <footer className="section-dark">
         <div className="container-x py-16">
-          <span className="text-branco [--wm-accent:var(--ultramar-claro)]"><ArqueWordmark className="h-7 w-auto" /></span>
+          <span className="text-branco [--wm-accent:var(--ultramar-claro)]"><ArqueWordmark optical className="h-7 w-auto" /></span>
           <div className="mt-12 flex flex-col gap-4 border-t border-linha-escura pt-6 sm:flex-row sm:justify-between">
             <p className="label-mono text-nevoa">Conceito · Área do cliente · 25.10.2026</p>
             <p className="label-mono text-branco">Por princípio.</p>
