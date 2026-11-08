@@ -19,10 +19,10 @@ describe("App routing", () => {
     expect(fallback).toContain('href="/enxoval/enxoval.html"');
   });
 
-  it("serves the version 1.0 attachment byte-for-byte", () => {
+  it("serves the enxoval with the approved v1.1 identity changes byte-for-byte", () => {
     const bytes = readFileSync("public/enxoval/enxoval.html");
     expect(createHash("sha256").update(bytes).digest("hex")).toBe(
-      "2a5f23d3341aa148cdf1dc35f80945e4e8c19e245683d90512c6bb0e6de58a97",
+      "c9e9be509a79bd9bf49eee38b3a0348e4e25e98653f68ffee4305878a7154dd9",
     );
   });
 
