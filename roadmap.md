@@ -4,8 +4,8 @@
 - [x] Link discreto "Enxoval" no rodapé do site e verificação desktop/mobile.
 
 # Identidade visual v1.1
-- [ ] Aplicar os paths oficiais, símbolo circunflexo, versões ópticas e favicon sem alterar cores ou layout.
-- [ ] Migrar SVGs inline do Enxoval e conferir domínio oficial, testes e desktop/mobile.
+- [x] Aplicar os paths oficiais, símbolo circunflexo, versões ópticas e favicon sem alterar cores ou layout.
+- [x] Migrar SVGs inline do Enxoval e conferir domínio oficial; 30 testes passaram e a marca foi verificada em 1440/390px.
 - [ ] Receber og-image.jpg e apple-touch-icon.png do time; sem placeholders.
 
 # Conceito · Área do cliente
