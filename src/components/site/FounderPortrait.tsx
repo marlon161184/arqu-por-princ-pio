@@ -1,4 +1,4 @@
-import { ArqueMonogram } from "@/components/ArqueWordmark";
+import { ArqueSymbol } from "@/components/ArqueWordmark";
 
 type FounderPortraitProps = {
   src?: string;
@@ -25,12 +25,12 @@ export function FounderPortrait({ src, alt = "Marlon Silva", width, height, load
             aria-hidden="true"
             className="absolute bottom-0 left-0 flex aspect-square w-[22%] items-center justify-center bg-carvao text-branco [--wm-accent:var(--ultramar-claro)]"
           >
-            <ArqueMonogram className="w-[55%]" />
+            <ArqueSymbol className="w-[55%]" />
           </div>
         </>
       ) : (
         <div className="absolute inset-0 flex items-center justify-center text-branco [--wm-accent:var(--ultramar-claro)]">
-          <ArqueMonogram className="w-[40%]" />
+          <ArqueSymbol className="w-[40%]" />
         </div>
       )}
     </div>

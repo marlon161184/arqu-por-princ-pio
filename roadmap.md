@@ -3,6 +3,11 @@
 - [x] Criar a rota `/enxoval` com pranchas em escala, cabeçalho e rodapé próprios.
 - [x] Link discreto "Enxoval" no rodapé do site e verificação desktop/mobile.
 
+# Identidade visual v1.1
+- [ ] Aplicar os paths oficiais, símbolo circunflexo, versões ópticas e favicon sem alterar cores ou layout.
+- [ ] Migrar SVGs inline do Enxoval e conferir domínio oficial, testes e desktop/mobile.
+- [ ] Receber og-image.jpg e apple-touch-icon.png do time; sem placeholders.
+
 # Conceito · Área do cliente
 - [x] Criar página própria e protótipo local com cinco telas e filtros.
 - [x] Adicionar somente o link discreto no rodapé institucional.
