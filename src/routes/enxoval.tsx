@@ -13,9 +13,10 @@ export const Route = createFileRoute("/enxoval")({
       { property: "og:title", content: TITLE },
       { property: "og:description", content: DESC },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://arqueporprincipio.com.br/enxoval" },
       { name: "twitter:card", content: "summary" },
     ],
-    links: [{ rel: "canonical", href: ENXOVAL_HREF }],
+    links: [{ rel: "canonical", href: "https://arqueporprincipio.com.br/enxoval" }],
   }),
   component: EnxovalRedirect,
 });

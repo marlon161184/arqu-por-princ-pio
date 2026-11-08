@@ -50,7 +50,7 @@ export function ClientAreaPrototype() {
               <div ref={contentRef} className="client-content" key={screen}>
                 {screen === "home" && (
                   <>
-                    <ArqueWordmark className="client-small-wordmark" />
+                    <ArqueWordmark optical className="client-small-wordmark" />
                     <p className="client-label mt-7 text-grafite">Olá, Helena · Empresa Exemplo Logística</p>
                     <h2 className="client-title mt-4">2 projetos em andamento.</h2>
                     <div className="client-projects mt-7">
