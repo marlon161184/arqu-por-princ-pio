@@ -1,54 +1,41 @@
 import { useState } from "react";
 import { clientes } from "@/data/clientes";
-import { frentes } from "@/data/produtosPorFrente";
+import { frentes, produtoDigital } from "@/data/produtos";
+import { FrentesStack } from "./FrentesStack";
+import { FrentePasta } from "./FrentePasta";
+import { DigitalIndex } from "./DigitalIndex";
+import { ProdutoPasta } from "./ProdutoPasta";
+import { PastaPanel } from "./PastaPanel";
 import { Button } from "@/components/ui/button";
 import { Chevron } from "@/components/site/primitives";
 
+type Pasta = { tipo: "frente"; idx: number } | { tipo: "produto"; num: string; from?: number };
+
 export function DigitalProducts() {
-  const [frenteAberta, setFrenteAberta] = useState<number | null>(0);
+  const [pasta, setPasta] = useState<Pasta | null>(null);
+  const fechar = () => setPasta(null);
+  const produto = pasta?.tipo === "produto" ? produtoDigital(pasta.num) : undefined;
   return <section id="produtos" aria-labelledby="produtos-title">
+    {pasta && <PastaPanel titleId="pasta-title" onClose={fechar}>
+      {pasta.tipo === "frente"
+        ? <FrentePasta key={`f${pasta.idx}`} frente={frentes[pasta.idx]!} index={pasta.idx} onProduto={(num) => setPasta({ tipo: "produto", num, from: pasta.idx })} />
+        : produto && <ProdutoPasta key={produto.num} produto={produto} onVerEmUso={fechar} {...(pasta.from !== undefined ? { onVoltar: () => setPasta({ tipo: "frente", idx: pasta.from! }) } : {})} />}
+    </PastaPanel>}
     <div className="bg-surface-alt">
       <div className="container-x py-24 lg:py-32">
         <p className="label-mono text-ink-muted">05 Produtos</p>
         <p className="measure mt-4 text-ink-muted">Produto é o que entregamos como consultoria, por frente. Produto digital é o sistema que construímos.</p>
         <p className="label-mono mt-16 text-brand">05.1 Por frente</p>
         <h2 id="produtos-title" className="h1-style mt-6 max-w-[22ch] text-ink">O que contratar, frente a frente.</h2>
-        <p className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2 text-sm text-ink-muted"><span className="product-digital-badge">Digital</span><span>sistema que segue evoluindo com você</span></p>
-        <div className="products-menu mt-16">
-          {frentes.map((frente, frenteIndex) => <div key={frente.name} className="products-front min-w-0 border-t-2 border-carvao">
-            <h3 className="products-front-heading">
-              <span className="h3-style hidden text-ink lg:block">{frente.name}</span>
-              <Button variant="ghost" className="products-front-toggle lg:hidden" aria-expanded={frenteAberta === frenteIndex} aria-controls={`produtos-frente-${frenteIndex}`} onClick={() => setFrenteAberta(frenteAberta === frenteIndex ? null : frenteIndex)}>
-                <span className="h3-style">{frente.name}</span><span className="product-indicator" aria-hidden="true">{frenteAberta === frenteIndex ? "−" : "+"}</span>
-              </Button>
-            </h3>
-            <ul id={`produtos-frente-${frenteIndex}`} className={frenteAberta === frenteIndex ? "contents" : "hidden lg:contents"} aria-label={`Produtos de ${frente.name}`}>
-              {frente.produtos.map((p, produtoIndex) => <li key={p.name} className="min-w-0 border-t border-rule">
-                <details className="product-entry">
-                  <summary className="product-summary">
-                    <span className="product-number text-ink-muted" aria-hidden="true">{frenteIndex + 1}.{produtoIndex + 1}</span>
-                    <span className="product-name text-ink">{p.name}</span>
-                    {p.digital && <span className="product-digital-badge">Digital</span>}
-                    <span className="product-indicator product-entry-indicator text-ink-muted" aria-hidden="true" />
-                  </summary>
-                  <p className="product-description text-ink-muted">{p.descricao}</p>
-                </details>
-              </li>)}
-            </ul>
-          </div>)}
-        </div>
+        <div className="mt-16"><FrentesStack paused={pasta !== null} onOpen={(i) => setPasta({ tipo: "frente", idx: i })} /></div>
       </div>
     </div>
     <div id="ia-inovacao" className="section-dark" aria-labelledby="ia-inovacao-title" role="region">
       <div className="container-x py-24 lg:py-32">
         <p className="label-mono text-ultramar-claro">05.2 IA &amp; Inovação</p>
-        <h2 id="ia-inovacao-title" className="display-l mt-6 max-w-[22ch] text-concreto">Iniciativas que viram sistema.</h2>
-        <div className="body-l measure mt-8 space-y-6 text-nevoa">
-          <p>Estratégia, cultura e governança costumam parar no documento. Nós as levamos até a tela que alguém usa na segunda-feira.</p>
-          <p>Arquitetamos, com IA e ferramentas no-code, sistemas de gestão, governança e people analytics. Não são vitrines de tecnologia. São iniciativas, governanças e movimentos que ganharam forma operacional.</p>
-          <p>Como cada sistema nasce: parte de um problema de gestão, passa pelo método e termina em um sistema em uso.</p>
-          <p>Depois da entrega, o sistema continua. Versões, ajustes e novas funções acompanham a empresa, e os dados e a documentação são sempre do cliente.</p>
-        </div>
+        <h2 id="ia-inovacao-title" className="display-l mt-6 max-w-[22ch] text-concreto">Doze produtos digitais que continuam em uso.</h2>
+        <p className="body-l measure mt-8 text-nevoa">Depois da entrega, o sistema continua. Versões, ajustes e novas funções acompanham a empresa, e os dados e a documentação são sempre do cliente.</p>
+        <DigitalIndex onOpen={(num) => setPasta({ tipo: "produto", num })} />
         <section aria-labelledby="clientes-title" className="my-16">
           <p className="label-mono text-ultramar-claro">05.3 Clientes</p>
           <h3 id="clientes-title" className="h3-style mt-6 text-white">Quem constrói conosco.</h3>

@@ -9,8 +9,8 @@
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
 
-- Keep consultancy products in typed `src/data/produtosPorFrente.ts` and client groups with logos and item descriptions in typed `src/data/clientes.ts`, rendered through the focused Products section so content stays independent from presentation without restoring the removed suite portfolio.
-- Render 05.1 as a numbered editorial menu with native product disclosures, shared desktop grid tracks and a single open mobile front; this keeps rows aligned and descriptions keyboard-accessible without duplicating content.
+- Keep section 05 content in typed `src/data/produtos.ts` (fronts, products, digital-product folders) and client groups in `src/data/clientes.ts`, so content stays independent from presentation.
+- Render 05.1 as a 3D card stack (FrentesStack) driven by pure math in `src/lib/stackMath.ts`, and 05.2 as a live index (DigitalIndex); both open one shared modal PastaPanel so focus, Esc and scroll lock live in one place. The 3D tilt is the only motion exception on the page.
 - Store uploaded client logos as Lovable Assets pointers in `src/assets/` to keep binaries off the repository; client logos do not replace the Arquê favicon because they are not the app brand.
 - Symbol = isolated circumflex (^), component ArqueSymbol; the ê monogram is retired in v1.1. The founder portrait pairs the photo (Lovable Asset, object-cover object-top) with ArqueSymbol in the unchanged flush bottom-left carvão square (~22% width); without a photo the large symbol stays the fallback.
 - Load web fonts through the TanStack root head, the project's HTML document owner; there is no index.html.
