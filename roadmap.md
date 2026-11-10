@@ -59,3 +59,4 @@
 
 # Fundador · Foto do Marlon
 - [x] Incluir a foto marlon-fundador.webp (Lovable Asset) no FounderPortrait com o monograma em quadrado carvão rente ao canto inferior esquerdo, fallback do monograma grande, testes e verificação em 1440/390px, sem publicar.
+- [x] 05.1 pilha 3D de frentes com pasta lateral; 05.2 índice vivo dos 12 produtos digitais com pasta do produto.
