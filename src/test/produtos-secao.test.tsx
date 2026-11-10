@@ -1,14 +1,53 @@
-import { cleanup, waitFor, fireEvent, render, screen, within } from "@testing-library/react";
-import { afterEach, describe, expect, it } from "vitest";
+import { act, cleanup, waitFor, fireEvent, render, screen, within } from "@testing-library/react";
+import { afterEach, describe, expect, it, vi } from "vitest";
+import { FrentesStack } from "@/components/produtos/FrentesStack";
 import { DigitalProducts } from "@/components/produtos/DigitalProducts";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { frentes, produtosDigitais, comoEntregue } from "@/data/produtos";
 import { clientes } from "@/data/clientes";
 import { stackPos, stackOpacity, isFront, activeIndex } from "@/lib/stackMath";
 
-afterEach(cleanup);
+afterEach(() => { cleanup(); vi.restoreAllMocks(); });
 
 describe("Seção 05 Produtos", () => {
+  it("stops automatic rotation until the manual pause is toggled off", () => {
+    let frame: FrameRequestCallback | undefined;
+    vi.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => { frame = callback; return 1; });
+    vi.spyOn(window, "cancelAnimationFrame").mockImplementation(() => {});
+    render(<FrentesStack paused={false} onOpen={() => {}} />);
+    const card = screen.getByRole("button", { name: "Abrir a pasta de Estratégia" });
+    const control = screen.getByRole("button", { pressed: false });
+    const start = performance.now();
+    const tick = (time: number) => act(() => { frame?.(time); });
+    const initial = card.style.transform;
+    tick(start + 100);
+    expect(card.style.transform).not.toBe(initial);
+    fireEvent.click(control);
+    expect(control).toHaveAttribute("aria-pressed", "true");
+    const stopped = card.style.transform;
+    tick(start + 200);
+    tick(start + 300);
+    expect(card.style.transform).toBe(stopped);
+    fireEvent.mouseEnter(card.parentElement?.parentElement ?? card);
+    fireEvent.mouseLeave(card.parentElement?.parentElement ?? card);
+    tick(start + 400);
+    expect(card.style.transform).toBe(stopped);
+    fireEvent.click(control);
+    expect(control).toHaveAttribute("aria-pressed", "false");
+    tick(start + 500);
+    expect(card.style.transform).not.toBe(stopped);
+  });
+
+  it("disables resuming automatic rotation when reduced motion is requested", () => {
+    const original = window.matchMedia;
+    vi.spyOn(window, "matchMedia").mockImplementation((query) => ({ ...original(query), matches: true }));
+    render(<FrentesStack paused={false} onOpen={() => {}} />);
+    const control = screen.getByRole("button", { pressed: true });
+    expect(control).toBeDisabled();
+    fireEvent.click(control);
+    expect(control).toHaveAttribute("aria-pressed", "true");
+  });
+
   it("keeps anchors and chapter labels", () => {
     render(<DigitalProducts />);
     for (const l of ["05 Produtos", "05.1 Por frente", "05.2 IA & Inovação", "05.3 Clientes"]) expect(screen.getByText(l)).toBeInTheDocument();
