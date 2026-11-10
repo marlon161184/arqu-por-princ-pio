@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { frentes } from "@/data/produtos";
 import { activeIndex, isFront, stackOpacity, stackPos, stackTransform } from "@/lib/stackMath";
 import { Chevron } from "@/components/site/primitives";
+import { Button } from "@/components/ui/button";
 
 const CORES = ["carvao", "branco", "noite", "concreto"] as const;
 const N = frentes.length;
@@ -23,12 +24,13 @@ export function FrentesStack({ paused, onOpen }: { paused: boolean; onOpen: (i: 
   const tRef = useRef(0);
   const [hover, setHover] = useState(false);
   const [drag, setDrag] = useState(false);
+  const [manuallyPaused, setManuallyPaused] = useState(false);
   const [stageW, setStageW] = useState(520);
   const stageRef = useRef<HTMLDivElement>(null);
   const anim = useRef<{ from: number; to: number; start: number } | null>(null);
   const dragRef = useRef<{ y: number; t0: number; moved: boolean } | null>(null);
   const reduced = useReducedMotion();
-  const stopAuto = paused || hover || drag || reduced;
+  const stopAuto = paused || manuallyPaused || hover || drag || reduced;
   const stopRef = useRef(stopAuto);
   stopRef.current = stopAuto;
 
@@ -112,6 +114,12 @@ export function FrentesStack({ paused, onOpen }: { paused: boolean; onOpen: (i: 
           </button>;
         })}
       </div>
+      <Button type="button" variant="ghost" className="stack-pause"
+        aria-pressed={manuallyPaused || reduced} disabled={reduced}
+        onPointerDown={(e) => e.stopPropagation()}
+        onClick={() => setManuallyPaused((value) => !value)}>
+        {manuallyPaused || reduced ? "Continuar" : "Pausar"}
+      </Button>
     </div>
   </div>;
 }

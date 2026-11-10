@@ -216,6 +216,9 @@
 .stack-btn { display: inline-flex; width: 48px; height: 48px; align-items: center; justify-content: center; border: 1px solid var(--carvao); color: var(--carvao); }
 .stack-btn:hover { background: var(--carvao); color: var(--branco); }
 .stack-stage { position: relative; height: min(78vh, 620px); perspective: 1500px; touch-action: none; user-select: none; overflow: hidden; }
+.stack-pause { position: absolute; left: 4px; bottom: 4px; z-index: 20; min-width: 112px; height: 40px; padding: 12px; border-radius: 0; background: var(--surface); color: var(--ink-muted); box-shadow: none; font-family: var(--font-mono); font-size: 12px; line-height: 16px; font-weight: 500; letter-spacing: 0.14em; text-transform: uppercase; transition: none; }
+.stack-pause:hover { background: var(--surface); color: var(--ink); }
+.stack-pause:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; box-shadow: none; }
 .stack-tilt { position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX(16deg) rotateY(-20deg) rotateZ(-4deg); pointer-events: none; }
 .stack-card { pointer-events: auto; position: absolute; left: 50%; top: 50%; display: flex; flex-direction: column; justify-content: space-between; padding: 24px; text-align: left; cursor: pointer; will-change: transform; }
 .stack-card[data-cor="ultramar"] { background: var(--ultramar); color: var(--branco); }
