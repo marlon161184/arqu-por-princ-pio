@@ -1,4 +1,4 @@
-import { cleanup, fireEvent, render, screen, within } from "@testing-library/react";
+import { cleanup, waitFor, fireEvent, render, screen, within } from "@testing-library/react";
 import { afterEach, describe, expect, it } from "vitest";
 import { DigitalProducts } from "@/components/produtos/DigitalProducts";
 import { SiteHeader } from "@/components/site/SiteHeader";
@@ -72,10 +72,11 @@ describe("Seção 05 Produtos", () => {
     expect(comoEntregue(produtosDigitais[0])).toHaveLength(3);
   });
 
-  it("brings a front chosen in the list forward", () => {
+  it("brings a front chosen in the list forward", async () => {
     render(<DigitalProducts />);
-    fireEvent.click(within(screen.getByRole("list", { name: "Frentes" })).getByRole("button", { name: /Marcas/ }));
-    expect(screen.getByRole("button", { name: /Marcas/, current: "true" } as never)).toBeInTheDocument();
+    const marcas = within(screen.getByRole("list", { name: "Frentes" })).getByRole("button", { name: /Marcas/ });
+    fireEvent.click(marcas);
+    await waitFor(() => expect(screen.getByRole("button", { name: "Abrir a pasta de Marcas" })).toBeInTheDocument(), { timeout: 1500 });
   });
 
   it("retains the contact invitation", () => {
