@@ -2,66 +2,83 @@ import { cleanup, fireEvent, render, screen, within } from "@testing-library/rea
 import { afterEach, describe, expect, it } from "vitest";
 import { DigitalProducts } from "@/components/produtos/DigitalProducts";
 import { SiteHeader } from "@/components/site/SiteHeader";
-import { frentes } from "@/data/produtosPorFrente";
+import { frentes, produtosDigitais, comoEntregue } from "@/data/produtos";
 import { clientes } from "@/data/clientes";
+import { stackPos, stackOpacity, isFront, activeIndex } from "@/lib/stackMath";
 
 afterEach(cleanup);
 
 describe("Seção 05 Produtos", () => {
-  it("renders both chapters", () => {
+  it("keeps anchors and chapter labels", () => {
     render(<DigitalProducts />);
-    expect(screen.getByText("05.1 Por frente")).toBeInTheDocument();
-    expect(screen.getByText("05.2 IA & Inovação")).toBeInTheDocument();
-    expect(document.getElementById("ia-inovacao")).not.toBeNull();
+    for (const l of ["05 Produtos", "05.1 Por frente", "05.2 IA & Inovação", "05.3 Clientes"]) expect(screen.getByText(l)).toBeInTheDocument();
     expect(document.getElementById("produtos")).not.toBeNull();
+    expect(document.getElementById("ia-inovacao")).not.toBeNull();
+    expect(screen.getByRole("heading", { name: "Doze produtos digitais que continuam em uso." })).toBeInTheDocument();
   });
 
-  it("lists four fronts with five products each", () => {
+  it("has four fronts with five products, twenty in total", () => {
     expect(frentes.map((f) => f.name)).toEqual(["Estratégia", "Pessoas", "Marcas", "Negócios"]);
+    expect(frentes.every((f) => f.produtos.length === 5 && f.met.length === 4)).toBe(true);
+  });
+
+  it("keeps the twelve digital products with site numbering", () => {
+    const nums = ["1.2", "1.3", "1.4", "2.1", "2.2", "2.4", "2.5", "3.2", "3.3", "4.2", "4.3", "4.5"];
+    expect(frentes.flatMap((f) => f.produtos).filter((p) => p.digital).map((p) => p.num)).toEqual(nums);
+    expect(produtosDigitais.map((p) => p.num)).toEqual(nums);
+  });
+
+  it("computes stack positions in [-2, 2) with a single front card", () => {
+    expect(stackPos(0, 0)).toBe(0);
+    expect(stackPos(3, 0)).toBe(-1);
+    expect(stackPos(2, 0)).toBe(-2);
+    expect(stackOpacity(2)).toBe(0);
+    expect(stackOpacity(1)).toBe(1);
+    for (const t of [0, 0.3, 1.7, 5.2]) expect([0, 1, 2, 3].filter((i) => isFront(stackPos(i, t)))).toHaveLength(1);
+    expect(activeIndex(-1)).toBe(3);
+  });
+
+  it("opens the front folder from the front card and closes with Esc returning focus", () => {
     render(<DigitalProducts />);
-    for (const f of frentes) {
-      expect(within(screen.getByRole("list", { name: `Produtos de ${f.name}` })).getAllByRole("listitem")).toHaveLength(5);
-    }
+    const card = screen.getByRole("button", { name: "Abrir a pasta de Estratégia" });
+    card.focus();
+    fireEvent.click(card);
+    const dialog = screen.getByRole("dialog");
+    expect(dialog).toHaveAttribute("aria-modal", "true");
+    for (const h of ["Quando procurar", "Como o método se aplica", "Resultado esperado", "Cinco produtos"]) expect(within(dialog).getByText(h)).toBeInTheDocument();
+    expect(within(within(dialog).getByRole("list", { name: "Produtos de Estratégia" })).getAllByRole("listitem")).toHaveLength(5);
+    fireEvent.keyDown(document, { key: "Escape" });
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(document.activeElement).toBe(card);
   });
 
-  it("keeps the twenty consultancy products without digital-version navigation", () => {
+  it("opens a digital product from the front folder with a back button", () => {
     render(<DigitalProducts />);
-    expect(frentes.flatMap((frente) => frente.produtos)).toHaveLength(20);
-    for (const frente of frentes) {
-      expect(within(screen.getByRole("list", { name: `Produtos de ${frente.name}` })).queryAllByRole("link")).toHaveLength(0);
-    }
+    fireEvent.click(screen.getByRole("button", { name: "Abrir a pasta de Estratégia" }));
+    fireEvent.click(within(screen.getByRole("dialog")).getByRole("button", { name: /OKRs e desdobramento de metas/ }));
+    expect(screen.getByRole("heading", { name: "Meta só orienta quando chega a cada líder." })).toBeInTheDocument();
+    fireEvent.click(screen.getByRole("button", { name: "Voltar para a frente" }));
+    expect(screen.getByRole("heading", { name: "Estratégia é a decisão que cabe em uma rotina." })).toBeInTheDocument();
   });
 
-  it("keeps exactly the twelve designated digital products", () => {
-    expect(frentes.flatMap((frente) => frente.produtos).filter((produto) => produto.digital).map((produto) => produto.name)).toEqual([
-      "OKRs e desdobramento de metas", "Escritório de transformação", "Processos e indicadores",
-      "Cultura e proposta de valor ao colaborador", "Cargos, salários e remuneração estratégica",
-      "Universidade corporativa e onboarding", "People analytics", "Brandbook e design system",
-      "Enxoval e aplicação de marca", "Estratégia comercial e pipeline", "Funil e nutrição de clientes", "Painel de performance",
-    ]);
-  });
-
-  it("shows the digital legend and a badge for each digital product", () => {
+  it("lists twelve index rows and opens a product folder with three delivery lines", () => {
     render(<DigitalProducts />);
-    expect(screen.getByText("sistema que segue evoluindo com você")).toBeInTheDocument();
-    expect(screen.getAllByText("Digital")).toHaveLength(13);
+    const rows = frentes.flatMap((f) => within(screen.getByRole("list", { name: `Produtos digitais de ${f.name}` })).getAllByRole("button"));
+    expect(rows).toHaveLength(12);
+    fireEvent.click(rows[11]);
+    const dialog = screen.getByRole("dialog");
+    expect(within(within(dialog).getByRole("list", { name: "Como é entregue" })).getAllByRole("listitem")).toHaveLength(3);
+    expect(within(dialog).getByRole("link", { name: "Ver em uso" })).toHaveAttribute("href", "#contato");
+    expect(comoEntregue(produtosDigitais[0])).toHaveLength(3);
   });
 
-  it("starts with the first mobile front open and opens only one at a time", () => {
+  it("brings a front chosen in the list forward", () => {
     render(<DigitalProducts />);
-    const estrategia = screen.getByRole("button", { name: "Estratégia" });
-    const pessoas = screen.getByRole("button", { name: "Pessoas" });
-    expect(estrategia).toHaveAttribute("aria-expanded", "true");
-    expect(screen.getAllByRole("button", { expanded: true })).toHaveLength(1);
-    fireEvent.click(pessoas);
-    expect(estrategia).toHaveAttribute("aria-expanded", "false");
-    expect(pessoas).toHaveAttribute("aria-expanded", "true");
-    expect(screen.getAllByRole("button", { expanded: true })).toHaveLength(1);
-    fireEvent.click(pessoas);
-    expect(screen.queryAllByRole("button", { expanded: true })).toHaveLength(0);
+    fireEvent.click(within(screen.getByRole("list", { name: "Frentes" })).getByRole("button", { name: /Marcas/ }));
+    expect(screen.getByRole("button", { name: /Marcas/, current: "true" } as never)).toBeInTheDocument();
   });
 
-  it("retains the contact invitation without restoring suite navigation", () => {
+  it("retains the contact invitation", () => {
     render(<DigitalProducts />);
     expect(screen.getByRole("link", { name: "Conversar sobre um produto" })).toHaveAttribute("href", "#contato");
   });
@@ -77,20 +94,14 @@ describe("Seção 05 Produtos", () => {
       expect(logo).toHaveAttribute("src", expect.stringContaining("hyndra-logo-branco.png"));
       expect(logo).toHaveAttribute("height", "64");
     }
-    expect(clientes.map((grupo) => [grupo.id, grupo.itens.length])).toEqual([
-      ["hyndra-e-newe", 7], ["hyndra", 1], ["newe", 4],
-    ]);
+    expect(clientes.map((grupo) => [grupo.id, grupo.itens.length])).toEqual([["hyndra-e-newe", 7], ["hyndra", 1], ["newe", 4]]);
   });
 
   it("renders all twelve client items with their full descriptions", () => {
     render(<DigitalProducts />);
     expect(screen.getAllByRole("term")).toHaveLength(12);
-    expect(screen.getAllByRole("definition")).toHaveLength(12);
-    for (const grupo of clientes) {
-      for (const item of grupo.itens) {
-        const term = screen.getByText(item.nome, { selector: "dt" });
-        expect(term.nextElementSibling?.textContent).toBe(item.descricao);
-      }
+    for (const grupo of clientes) for (const item of grupo.itens) {
+      expect(screen.getByText(item.nome, { selector: "dt" }).nextElementSibling?.textContent).toBe(item.descricao);
     }
   });
 
