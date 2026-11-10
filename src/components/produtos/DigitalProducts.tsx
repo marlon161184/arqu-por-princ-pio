@@ -18,8 +18,8 @@ export function DigitalProducts() {
   return <section id="produtos" aria-labelledby="produtos-title">
     {pasta && <PastaPanel titleId="pasta-title" onClose={fechar}>
       {pasta.tipo === "frente"
-        ? <FrentePasta key={`f${pasta.idx}`} frente={frentes[pasta.idx]} index={pasta.idx} onProduto={(num) => setPasta({ tipo: "produto", num, from: pasta.idx })} />
-        : produto && <ProdutoPasta key={produto.num} produto={produto} onVerEmUso={fechar} onVoltar={pasta.from !== undefined ? () => setPasta({ tipo: "frente", idx: pasta.from! }) : undefined} />}
+        ? <FrentePasta key={`f${pasta.idx}`} frente={frentes[pasta.idx]!} index={pasta.idx} onProduto={(num) => setPasta({ tipo: "produto", num, from: pasta.idx })} />
+        : produto && <ProdutoPasta key={produto.num} produto={produto} onVerEmUso={fechar} {...(pasta.from !== undefined ? { onVoltar: () => setPasta({ tipo: "frente", idx: pasta.from! }) } : {})} />}
     </PastaPanel>}
     <div className="bg-surface-alt">
       <div className="container-x py-24 lg:py-32">

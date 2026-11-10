@@ -37,7 +37,7 @@ export function FrentesStack({ paused, onOpen }: { paused: boolean; onOpen: (i: 
   useEffect(() => {
     const el = stageRef.current;
     if (!el || typeof ResizeObserver === "undefined") return;
-    const ro = new ResizeObserver(([e]) => setStageW(e.contentRect.width));
+    const ro = new ResizeObserver((es) => setStageW(es[0]?.contentRect.width ?? 520));
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
@@ -84,7 +84,7 @@ export function FrentesStack({ paused, onOpen }: { paused: boolean; onOpen: (i: 
         <button type="button" className="stack-btn" aria-label="Frente anterior" onClick={() => goTo(Math.round(tRef.current) - 1)}><Chevron /></button>
         <button type="button" className="stack-btn" aria-label="Próxima frente" onClick={() => goTo(Math.round(tRef.current) + 1)}><Chevron rotate={180} /></button>
       </div>
-      <p className="sr-only" aria-live="polite">Frente ativa: {frentes[ativa].name}</p>
+      <p className="sr-only" aria-live="polite">Frente ativa: {frentes[ativa]?.name}</p>
     </div>
     <div ref={stageRef} className="stack-stage" onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)}
       onPointerDown={(e) => { dragRef.current = { y: e.clientY, t0: tRef.current, moved: false }; anim.current = null; }}

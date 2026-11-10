@@ -65,11 +65,11 @@ describe("Seção 05 Produtos", () => {
     render(<DigitalProducts />);
     const rows = frentes.flatMap((f) => within(screen.getByRole("list", { name: `Produtos digitais de ${f.name}` })).getAllByRole("button"));
     expect(rows).toHaveLength(12);
-    fireEvent.click(rows[11]);
+    fireEvent.click(rows[11]!);
     const dialog = screen.getByRole("dialog");
     expect(within(within(dialog).getByRole("list", { name: "Como é entregue" })).getAllByRole("listitem")).toHaveLength(3);
     expect(within(dialog).getByRole("link", { name: "Ver em uso" })).toHaveAttribute("href", "#contato");
-    expect(comoEntregue(produtosDigitais[0])).toHaveLength(3);
+    expect(comoEntregue(produtosDigitais[0]!)).toHaveLength(3);
   });
 
   it("brings a front chosen in the list forward", async () => {
