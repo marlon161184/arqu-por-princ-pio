@@ -62,6 +62,7 @@
 - [x] 05.1 pilha 3D de frentes com pasta lateral; 05.2 índice vivo dos 12 produtos digitais com pasta do produto.
 
 # Alinhamento v1.1 e Clientes · Índice vivo
-- [ ] Alinhar textos, tamanhos mínimos, símbolo e cantos retos ao v1.1, preservando exports.
-- [ ] Transformar 05.3 em índice vivo por grupo com pasta escura compartilhada, preservando dados e logos.
-- [ ] Atualizar testes e verificar computador, celular, teclado e movimento reduzido, sem publicar.
+- [x] Alinhar textos, tamanhos mínimos, símbolo e cantos retos ao v1.1, preservando exports.
+- [x] Transformar 05.3 em índice vivo por grupo com pasta escura compartilhada, preservando dados e logos.
+- [x] Atualizar testes e verificar computador, celular, teclado e movimento reduzido, sem publicar.
+- [ ] Receber mockup atualizado do avatar do Enxoval: a imagem WebP embutida ainda mostra o ê antigo em círculos; os arquivos vetoriais/PNG exportados já usam o símbolo ^ em tiles retos. Preservar o binário original até receber substituto autorizado.
