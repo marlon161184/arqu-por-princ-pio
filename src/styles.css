@@ -192,7 +192,7 @@
 
 .field {
   width: 100%; background: transparent; color: var(--branco);
-  border: 0; border-bottom: 1px solid var(--branco); border-radius: 2px;
+  border: 0; border-bottom: 1px solid var(--branco); border-radius: 0;
   padding: 12px 0; font-size: 16px; line-height: 26px; resize: vertical;
 }
 .field::placeholder { color: var(--ultramar-tint); opacity: 1; }
@@ -233,10 +233,14 @@
 
 /* Pasta */
 .pasta-root { position: fixed; inset: 0; z-index: 100; }
-.pasta-backdrop { position: absolute; inset: 0; background: color-mix(in oklab, var(--carvao) 60%, transparent); }
+.pasta-backdrop { position: absolute; inset: 0; width: 100%; height: 100%; padding: 0; background: color-mix(in oklab, var(--carvao) 60%, transparent); }
+.pasta-backdrop:hover { background: color-mix(in oklab, var(--carvao) 60%, transparent); }
 .pasta-panel { position: absolute; top: 0; right: 0; bottom: 0; width: 100%; max-width: 640px; overflow-y: auto; background: var(--surface); color: var(--ink); padding: 24px clamp(20px, 5vw, 48px) 64px; animation: pasta-wipe var(--motion-slow) var(--motion-ease) both; }
 @keyframes pasta-wipe { from { clip-path: inset(0 0 0 100%); } to { clip-path: inset(0 0 0 0); } }
-.pasta-close { padding: 12px 0; color: var(--ink); text-decoration: underline; text-underline-offset: 4px; }
+.pasta-close { height: auto; padding: 12px 0; color: inherit; text-decoration: underline; text-underline-offset: 4px; background: transparent; box-shadow: none; }
+.pasta-close:hover { background: transparent; color: inherit; }
+.pasta-panel-dark { --focus: var(--ultramar-claro); background: var(--carvao); color: var(--branco); }
+.pasta-panel-dark .pasta-close:focus-visible { outline-color: var(--ultramar-claro); }
 .pasta-produto { display: grid; width: 100%; grid-template-columns: 40px minmax(0, 1fr) auto; gap: 12px; align-items: start; padding: 16px 0; text-align: left; }
 .pasta-produto-link:hover .font-semibold { color: var(--brand); }
 
@@ -253,8 +257,21 @@
 .index-btn:hover .index-chev, .index-btn:focus-visible .index-chev { transform: translateX(8px); }
 .index-btn:hover .index-num, .index-btn:focus-visible .index-num { color: var(--branco); }
 
+/* 05.3 uses the same wipe and reveal, with original white client content. */
+.cliente-index-btn { height: auto; grid-template-columns: 40px minmax(0, 1fr) 56px; gap: 12px; padding: 22px 8px 22px 0; color: var(--branco); white-space: normal; border-radius: 0; background: transparent; box-shadow: none; font-weight: 400; transition: none; }
+.cliente-index-btn:hover { background: transparent; color: var(--branco); }
+.cliente-index-btn .index-num { color: var(--branco); }
+.cliente-index-copy { display: flex; min-width: 0; flex-direction: column; gap: 10px; }
+.cliente-index-btn .index-name { font-size: 26px; line-height: 1.2; letter-spacing: 0; overflow-wrap: anywhere; }
+.cliente-index-resumo { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; font-size: 14px; line-height: 22px; color: var(--branco); }
+.cliente-index-btn .index-chev { justify-self: start; }
+.cliente-index-btn:hover .index-name, .cliente-index-btn:focus-visible .index-name { transform: none; }
+.cliente-index-btn:hover .index-chev, .cliente-index-btn:focus-visible .index-chev { transform: translateX(var(--motion-step)); }
+@media (max-width: 640px) { .cliente-index-btn .index-name { font-size: 22px; } }
+
 @media (prefers-reduced-motion: reduce) {
   .index-row { opacity: 1; transform: none; transition: none; }
   .pasta-panel { animation: none; }
   .index-btn::before, .index-name, .index-chev, .frentes-item { transition: none; }
+  .cliente-index-btn:hover .index-chev, .cliente-index-btn:focus-visible .index-chev { transform: none; }
 }
