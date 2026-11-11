@@ -111,11 +111,15 @@ describe("Seção 05 Produtos", () => {
     expect(comoEntregue(produtosDigitais[0]!)).toHaveLength(3);
   });
 
-  it("brings a front chosen in the list forward", async () => {
+  it("brings a front chosen in the list forward", () => {
+    let frame: FrameRequestCallback | undefined;
+    vi.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => { frame = callback; return 1; });
+    vi.spyOn(window, "cancelAnimationFrame").mockImplementation(() => {});
     render(<DigitalProducts />);
     const marcas = within(screen.getByRole("list", { name: "Frentes" })).getByRole("button", { name: /Marcas/ });
     fireEvent.click(marcas);
-    await waitFor(() => expect(screen.getByRole("button", { name: "Abrir a pasta de Marcas" })).toBeInTheDocument(), { timeout: 1500 });
+    act(() => frame?.(performance.now() + 300));
+    expect(screen.getByRole("button", { name: "Abrir a pasta de Marcas" })).toBeInTheDocument();
   });
 
   it("retains the contact invitation", () => {
@@ -137,12 +141,38 @@ describe("Seção 05 Produtos", () => {
     expect(clientes.map((grupo) => [grupo.id, grupo.itens.length])).toEqual([["hyndra-e-newe", 7], ["hyndra", 1], ["newe", 4]]);
   });
 
-  it("renders all twelve client items with their full descriptions", () => {
+  it("opens all twelve client items with their unchanged full descriptions", () => {
     render(<DigitalProducts />);
-    expect(screen.getAllByRole("term")).toHaveLength(12);
+    expect(clientes.flatMap((grupo) => grupo.itens).map((item) => item.num)).toEqual(["A.1", "A.2", "A.3", "A.4", "A.5", "A.6", "A.7", "B.1", "C.1", "C.2", "C.3", "C.4"]);
     for (const grupo of clientes) for (const item of grupo.itens) {
-      expect(screen.getByText(item.nome, { selector: "dt" }).nextElementSibling?.textContent).toBe(item.descricao);
+      const row = within(screen.getByRole("list", { name: `Produtos de ${grupo.nome}` })).getByRole("button", { name: `${item.num} ${item.nome}` });
+      row.focus();
+      fireEvent.click(row);
+      const dialog = screen.getByRole("dialog");
+      expect(within(dialog).getByRole("heading", { name: item.nome })).toBeInTheDocument();
+      expect(within(dialog).getByText(item.descricao)).toBeInTheDocument();
+      expect(within(dialog).getByRole("link", { name: "Ver em uso" })).toHaveAttribute("href", "#contato");
+      fireEvent.keyDown(document, { key: "Escape" });
+      expect(screen.queryByRole("dialog")).toBeNull();
+      expect(document.activeElement).toBe(row);
     }
+    expect(document.body.textContent).not.toMatch(/Chlorum/i);
+  });
+
+  it("contains keyboard focus and unlocks scrolling after a client contact action", () => {
+    render(<DigitalProducts />);
+    fireEvent.click(screen.getByRole("button", { name: "B.1 Hub Hyndra" }));
+    const dialog = screen.getByRole("dialog");
+    const close = within(dialog).getByRole("button", { name: "Fechar" });
+    const contact = within(dialog).getByRole("link", { name: "Ver em uso" });
+    expect(document.body.style.overflow).toBe("hidden");
+    fireEvent.keyDown(document, { key: "Tab", shiftKey: true });
+    expect(document.activeElement).toBe(contact);
+    fireEvent.keyDown(document, { key: "Tab" });
+    expect(document.activeElement).toBe(close);
+    fireEvent.click(contact);
+    expect(screen.queryByRole("dialog")).toBeNull();
+    expect(document.body.style.overflow).not.toBe("hidden");
   });
 
   it("keeps Produtos in the menu", () => {

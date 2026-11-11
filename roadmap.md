@@ -23,7 +23,7 @@
 - [x] Segundo link discreto no rodapé, em ultramar-claro, abrindo em nova aba com download.
 - [x] Teste do rodapé e verificação do link em desktop/mobile.
 
-# Enxoval de marca · Versão 1.0
+# Enxoval de marca · Versão 1.1
 - [x] Salvar o HTML original byte a byte em `public/enxoval/enxoval.html` e excluir as sete pranchas e o render antigos.
 - [x] Reduzir `/enxoval` a redirecionamento no cliente com link visível e apontar o rodapé diretamente ao HTML.
 - [x] Registrar geração externa com um motor vetorial único a partir dos tokens: 34 peças em 6 coleções — Papelaria, Sinalização, Clubinho Arquê, Digital e social, Kit de onboarding e Kit cliente novo.
@@ -58,5 +58,11 @@
 - [x] Atualizar 05.1 com 20 produtos (12 digitais), descrições expansíveis, quatro colunas alinhadas e sanfona de frentes no celular; acrescentar o quarto parágrafo de 05.2, verificar 28 testes e screenshots em 1440/390px sem desalinhamento ou rolagem horizontal, preservando 05.3 e o Enxoval, sem publicar.
 
 # Fundador · Foto do Marlon
-- [x] Incluir a foto marlon-fundador.webp (Lovable Asset) no FounderPortrait com o monograma em quadrado carvão rente ao canto inferior esquerdo, fallback do monograma grande, testes e verificação em 1440/390px, sem publicar.
+- [x] Incluir a foto marlon-fundador.webp (Lovable Asset) no FounderPortrait com o símbolo em quadrado carvão rente ao canto inferior esquerdo, fallback do símbolo grande, testes e verificação em 1440/390px, sem publicar.
 - [x] 05.1 pilha 3D de frentes com pasta lateral; 05.2 índice vivo dos 12 produtos digitais com pasta do produto.
+
+# Alinhamento v1.1 e Clientes · Índice vivo
+- [x] Alinhar textos, tamanhos mínimos, símbolo e cantos retos ao v1.1, preservando exports.
+- [x] Transformar 05.3 em índice vivo por grupo com pasta escura compartilhada, preservando dados e logos.
+- [x] Atualizar testes e verificar computador, celular, teclado e movimento reduzido, sem publicar.
+- [ ] Receber mockup atualizado do avatar do Enxoval: a imagem WebP embutida ainda mostra o ê antigo em círculos; os arquivos vetoriais/PNG exportados já usam o símbolo ^ em tiles retos. Preservar o binário original até receber substituto autorizado.
