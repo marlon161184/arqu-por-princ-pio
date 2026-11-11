@@ -111,11 +111,15 @@ describe("Seção 05 Produtos", () => {
     expect(comoEntregue(produtosDigitais[0]!)).toHaveLength(3);
   });
 
-  it("brings a front chosen in the list forward", async () => {
+  it("brings a front chosen in the list forward", () => {
+    let frame: FrameRequestCallback | undefined;
+    vi.spyOn(window, "requestAnimationFrame").mockImplementation((callback) => { frame = callback; return 1; });
+    vi.spyOn(window, "cancelAnimationFrame").mockImplementation(() => {});
     render(<DigitalProducts />);
     const marcas = within(screen.getByRole("list", { name: "Frentes" })).getByRole("button", { name: /Marcas/ });
     fireEvent.click(marcas);
-    await waitFor(() => expect(screen.getByRole("button", { name: "Abrir a pasta de Marcas" })).toBeInTheDocument(), { timeout: 1500 });
+    act(() => frame?.(performance.now() + 300));
+    expect(screen.getByRole("button", { name: "Abrir a pasta de Marcas" })).toBeInTheDocument();
   });
 
   it("retains the contact invitation", () => {
