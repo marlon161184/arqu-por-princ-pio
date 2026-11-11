@@ -1,6 +1,6 @@
 .client-concept-layout { display: grid; grid-template-columns: minmax(0, 1fr); gap: 48px; align-items: center; max-width: 920px; margin-inline: auto; }
 .client-phone-space { width: 390px; max-width: 100%; margin-inline: auto; position: relative; }
-.client-phone { width: 390px; height: 844px; border: 10px solid var(--carvao); border-radius: 44px; overflow: hidden; background: var(--surface); color: var(--carvao); transform-origin: top left; display: flex; flex-direction: column; text-align: left; }
+.client-phone { width: 390px; height: 844px; border: 10px solid var(--carvao); border-radius: 0; overflow: hidden; background: var(--surface); color: var(--carvao); transform-origin: top left; display: flex; flex-direction: column; text-align: left; }
 .client-phone * { letter-spacing: 0; }
 .client-phone :focus-visible { outline: 2px solid var(--ultramar); outline-offset: -3px; box-shadow: none; }
 .client-phone button { border-radius: 0; box-shadow: none; transition: none; }
