@@ -1,8 +1,9 @@
 import { useEffect, useRef, type ReactNode } from "react";
 import { createPortal } from "react-dom";
+import { Button } from "@/components/ui/button";
 
 /** Painel lateral modal: wipe reto, Esc/fundo/botão fecham, foco preso e devolvido à origem. */
-export function PastaPanel({ titleId, onClose, children }: { titleId: string; onClose: () => void; children: ReactNode }) {
+export function PastaPanel({ titleId, onClose, children, variant = "light" }: { titleId: string; onClose: () => void; children: ReactNode; variant?: "light" | "dark" }) {
   const panelRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef(onClose);
   closeRef.current = onClose;
@@ -14,10 +15,11 @@ export function PastaPanel({ titleId, onClose, children }: { titleId: string; on
     const onKey = (e: KeyboardEvent) => {
       if (e.key === "Escape") { e.preventDefault(); closeRef.current(); return; }
       if (e.key !== "Tab" || !panelRef.current) return;
-      const f = panelRef.current.querySelectorAll<HTMLElement>("button, a[href], [tabindex]:not([tabindex='-1'])");
+      const f = panelRef.current.querySelectorAll<HTMLElement>("button:not([disabled]):not([tabindex='-1']), a[href], [tabindex]:not([tabindex='-1'])");
       if (!f.length) return;
-      const first = f[0]!, last = f[f.length - 1]!;
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      const first = f[0], last = f[f.length - 1];
+      if (!first || !last) return;
+      if (e.shiftKey && (document.activeElement === first || !Array.from(f).includes(document.activeElement as HTMLElement))) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     };
     document.addEventListener("keydown", onKey);
@@ -25,9 +27,9 @@ export function PastaPanel({ titleId, onClose, children }: { titleId: string; on
   }, []);
   return createPortal(
     <div className="pasta-root">
-      <button type="button" className="pasta-backdrop" aria-label="Fechar pasta" tabIndex={-1} onClick={onClose} />
-      <div ref={panelRef} role="dialog" aria-modal="true" aria-labelledby={titleId} className="pasta-panel">
-        <div className="flex justify-end"><button type="button" className="pasta-close label-mono" onClick={onClose}>Fechar</button></div>
+      <Button type="button" variant="ghost" className="pasta-backdrop" aria-label="Fechar pasta" tabIndex={-1} onClick={onClose} />
+      <div ref={panelRef} role="dialog" aria-modal="true" aria-labelledby={titleId} className={`pasta-panel${variant === "dark" ? " pasta-panel-dark" : ""}`}>
+        <div className="flex justify-end"><Button type="button" variant="ghost" className="pasta-close label-mono" onClick={onClose}>Fechar</Button></div>
         {children}
       </div>
     </div>, document.body);

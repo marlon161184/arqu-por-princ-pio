@@ -4,7 +4,7 @@ import { SVGProps } from "react";
  * Logo Arquê v1.1 — contornos (Instrument Sans Semibold) com cortes a 45° em r, q, u
  * e circunflexo desenhado com cortes perpendiculares.
  * Letras = currentColor; circunflexo = var(--wm-accent, #2A3DE0).
- * Tamanho mínimo: wordmark 24px de altura; abaixo disso use optical (até 32px de altura).
+ * Tamanho mínimo: wordmark 24px / 10mm; abaixo disso use optical (até 32px de altura).
  */
 type WordmarkProps = SVGProps<SVGSVGElement> & { optical?: boolean };
 
@@ -22,7 +22,7 @@ export function ArqueWordmark({ optical = false, ...props }: WordmarkProps) {
   );
 }
 
-/** Símbolo v1.1: o circunflexo (^) isolado. Substitui o antigo monograma "ê". Mínimo 16px. */
+/** Símbolo v1.1: o circunflexo (^) isolado. Mínimo 16px / 4mm. */
 export function ArqueSymbol({ optical = false, ...props }: WordmarkProps) {
   return optical ? (
     <svg viewBox="0 0 543.74 395.62" fill="currentColor" aria-hidden="true" {...props}>
@@ -34,6 +34,3 @@ export function ArqueSymbol({ optical = false, ...props }: WordmarkProps) {
     </svg>
   );
 }
-
-/** @deprecated Alias de compatibilidade — use ArqueSymbol. */
-export const ArqueMonogram = ArqueSymbol;
