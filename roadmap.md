@@ -83,4 +83,4 @@
 - [x] Configurar og:image e twitter:image na home, com domínio oficial e dimensões 1200×630; manter tags de imagem fora da raiz para não afetar outras páginas.
 - [x] Alterar apenas a abertura do Clubinho; preservar IMGDATA, artes e exports.
 - [x] Atualizar integridade do Enxoval: `2ef09363f5322de9d3c4ab929293e930092d93d8757a7a33cf86f016c6191225`.
-- [ ] Rodar testes e conferir imagens, tags e download no preview; não publicar.
+- [x] Conferir 35 testes, imagens e tags no preview, download do PDF byte a byte e alteração única no texto do HTML; sem publicar.
