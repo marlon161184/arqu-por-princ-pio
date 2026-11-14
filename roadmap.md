@@ -76,7 +76,7 @@
 - [x] Atualizar o hash SHA-256 de integridade para `604e2a335e4b9b99c885e6014c02483092a53f6db06d466fdf95d6a32b46188b`.
 - [x] Conferir 35 testes, as 23 imagens byte a byte no preview e ausência de imagens quebradas; auditar identidade e downloads sem alterá-los.
 - [x] Receber e substituir o brandbook pelo PDF v1.1 de 30 páginas, byte a byte.
-- [ ] Receber slides atualizados: mantêm o monograma antigo, renders anteriores e domínio provisório; aguardando arquivo do time, preservado nesta atualização.
+- [x] Gerar slides atualizados em 48 páginas com identidade v1.1, conteúdo atual das frentes, produtos digitais e clientes, render novo do kit e domínio oficial; substituir o PDF no preview, sem publicar.
 
 # Pendências da auditoria · Assets v1.1
 - [x] Copiar imagens oficiais para public/ e substituir o brandbook no caminho existente; atualizar a indicação acessível para 30 páginas.
