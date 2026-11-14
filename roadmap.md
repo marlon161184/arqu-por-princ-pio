@@ -68,5 +68,5 @@
 - [ ] Receber mockup atualizado do avatar do Enxoval: a imagem WebP embutida ainda mostra o ê antigo em círculos; os arquivos vetoriais/PNG exportados já usam o símbolo ^ em tiles retos. Preservar o binário original até receber substituto autorizado.
 
 # Renders do Enxoval · v1.1
-- [ ] Substituir o render do kit na home e as entradas IMGDATA com correspondência inequívoca; preservar todo o restante do HTML e não publicar.
-- [ ] Atualizar o hash de integridade, executar testes e conferir as imagens no preview; listar chaves sem correspondente e arquivos sem chave própria.
+- [x] Substituir o render do kit na home e 19 entradas IMGDATA com correspondência inequívoca; preservar todo o restante do HTML e não publicar.
+- [x] Atualizar o hash de integridade; 35 testes passaram e imagens/modelos foram conferidos no preview; listar 28 chaves sem correspondente e quatro arquivos sem chave própria.
