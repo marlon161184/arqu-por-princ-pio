@@ -47,7 +47,7 @@ describe("Enxoval physical brand sizes", () => {
   });
 
   it("maximizes the pen mark to 9 mm within the 10 mm shaft diameter", () => {
-    const render = ART.canetas;
+    const render = ART["canetas"];
     if (!render) throw new Error("Missing pen artwork");
     const art = render(options, 0);
     expect(art.h).toBeCloseTo(9, 8);
