@@ -74,4 +74,5 @@
 # Renders do Enxoval · v1.1 · Lote 2
 - [x] Substituir somente o base64 das 23 chaves IMGDATA pelos WebP de mesmo nome; manter as outras 24 entradas e todo o HTML externo ao objeto byte a byte, sem publicar.
 - [x] Atualizar o hash SHA-256 de integridade para `604e2a335e4b9b99c885e6014c02483092a53f6db06d466fdf95d6a32b46188b`.
-- [ ] Conferir testes, renders no preview e auditoria somente de leitura da identidade e dos downloads.
+- [x] Conferir 35 testes, as 23 imagens byte a byte no preview e ausência de imagens quebradas; auditar identidade e downloads sem alterá-los.
+- [ ] Receber PDFs atualizados: o brandbook ainda é 1.0 e os slides mantêm o monograma antigo, renders anteriores e domínio provisório; arquivos preservados nesta auditoria.
