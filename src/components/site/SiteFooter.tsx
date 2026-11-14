@@ -10,7 +10,7 @@ export function SiteFooter() {
     <footer className="section-dark">
       <div className="container-x py-16">
         <div className="flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between">
-          <span className="text-branco [--wm-accent:var(--ultramar-claro)]"><ArqueWordmark optical style={{ height: 28, width: "auto" }} /></span>
+          <span className="text-branco [--wm-accent:var(--ultramar-claro)]"><ArqueWordmark className="h-7 w-auto lg:h-9" /></span>
           <Label className="text-nevoa">Estratégia · Pessoas · Marcas · Negócios</Label>
         </div>
         <div className="mt-16 flex flex-col gap-4 border-t border-linha-escura pt-6 sm:flex-row sm:items-center sm:justify-between">

@@ -84,3 +84,8 @@
 - [x] Alterar apenas a abertura do Clubinho; preservar IMGDATA, artes e exports.
 - [x] Atualizar integridade do Enxoval: `2ef09363f5322de9d3c4ab929293e930092d93d8757a7a33cf86f016c6191225`.
 - [x] Conferir 35 testes, imagens e tags no preview, download do PDF byte a byte e alteração única no texto do HTML; sem publicar.
+
+# Lote 3 · Renders e tamanhos da marca
+- [ ] Substituir somente sete imagens IMGDATA e a foto do fundador via Lovable Assets, preservando dimensões.
+- [ ] Ampliar wordmarks padrão no cabeçalho e rodapé e corrigir proporções e mínimos das artes impressas.
+- [ ] Atualizar integridade, testar artes/downloads e verificar 375/1280px; listar exceções abaixo de 10 mm, sem publicar.

@@ -37,7 +37,7 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-rule bg-surface">
       <div className="container-x flex h-[72px] items-center justify-between">
         <a href="/" className="flex min-h-11 items-center text-carvao [--wm-accent:var(--ultramar)]">
-          <ArqueWordmark optical style={{ height: 22, width: "auto" }} />
+          <ArqueWordmark className="h-7 w-auto lg:h-9" />
         </a>
         <nav aria-label="Principal" className="hidden items-center gap-8 lg:flex">
           {links.map((l) => (
@@ -61,7 +61,7 @@ export function SiteHeader() {
       {open && (
         <div id="menu-mobile" className="section-dark fixed inset-0 z-50 lg:hidden" role="dialog" aria-modal="true" aria-label="Menu">
           <div className="container-x flex h-[72px] items-center justify-between border-b border-linha-escura">
-            <span className="text-branco [--wm-accent:var(--ultramar-claro)]"><ArqueWordmark optical style={{ height: 22, width: "auto" }} /></span>
+            <span className="text-branco [--wm-accent:var(--ultramar-claro)]"><ArqueWordmark className="h-7 w-auto" /></span>
             <button type="button" className="label-mono min-h-11 px-2" onClick={() => setOpen(false)} autoFocus>Fechar</button>
           </div>
           <nav aria-label="Principal móvel" className="container-x flex flex-col pt-8">
