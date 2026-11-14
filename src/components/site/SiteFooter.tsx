@@ -39,7 +39,7 @@ export function SiteFooter() {
             download="arque-site-slides.pdf"
             target="_blank"
             rel="noopener"
-            aria-label="Baixar os slides do site da Arquê (PDF, 31 páginas)"
+            aria-label="Baixar os slides do site da Arquê (PDF, 48 páginas)"
             className="label-mono inline-flex items-center gap-2 whitespace-nowrap text-ultramar-claro underline-offset-4 hover:underline"
           >
             <Chevron size={10} className="shrink-0" />
