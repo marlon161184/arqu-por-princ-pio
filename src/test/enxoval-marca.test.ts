@@ -42,7 +42,7 @@ describe("Enxoval physical brand sizes", () => {
   });
 
   it("retains the official standard wordmark and symbol aspect ratios", () => {
-    expect(WMW(10)).toBeCloseTo(24.095365, 5);
+    expect(WMW(10)).toBeCloseTo(24.095373, 5);
     expect(MOW(16)).toBeCloseTo(23.495665, 5);
   });
 

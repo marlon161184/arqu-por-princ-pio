@@ -86,6 +86,8 @@
 - [x] Conferir 35 testes, imagens e tags no preview, download do PDF byte a byte e alteração única no texto do HTML; sem publicar.
 
 # Lote 3 · Renders e tamanhos da marca
-- [ ] Substituir somente sete imagens IMGDATA e a foto do fundador via Lovable Assets, preservando dimensões.
-- [ ] Ampliar wordmarks padrão no cabeçalho e rodapé e corrigir proporções e mínimos das artes impressas.
-- [ ] Atualizar integridade, testar artes/downloads e verificar 375/1280px; listar exceções abaixo de 10 mm, sem publicar.
+- [x] Substituir somente foto, destaque, cartao e quatro cracha_* em IMGDATA e a foto do fundador via Lovable Assets, preservando dimensões.
+- [x] Ampliar wordmarks padrão no cabeçalho e rodapé para 36px desktop / 28px mobile; corrigir proporções oficiais WM/MO/WMW/MOW e seus helpers de estampa.
+- [x] Ampliar timbrado, envelope, duas frentes do cartão, frente do crachá, quatro fichas e três aplicações nas cartas para 10mm; recentralizar símbolos do verso do crachá e da placa para evitar cortes após corrigir a proporção.
+- [x] Exceção: gravação de canetas/lápis ampliada de ~7,5mm para 9mm (21,69mm de largura), deixando margem de 0,5mm no diâmetro de 10mm; demais wordmarks físicos atingem 10mm ou mais.
+- [x] Integridade SHA-256 `35aa91369e0d9caa2babf8ba56a25d91312c028e7b7ceb3665560af786d9da58`; verificação 375/1280px, imagens byte a byte, artes e download real do ZIP do cartão; sem publicar.
