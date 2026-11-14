@@ -66,3 +66,7 @@
 - [x] Transformar 05.3 em índice vivo por grupo com pasta escura compartilhada, preservando dados e logos.
 - [x] Atualizar testes e verificar computador, celular, teclado e movimento reduzido, sem publicar.
 - [ ] Receber mockup atualizado do avatar do Enxoval: a imagem WebP embutida ainda mostra o ê antigo em círculos; os arquivos vetoriais/PNG exportados já usam o símbolo ^ em tiles retos. Preservar o binário original até receber substituto autorizado.
+
+# Renders do Enxoval · v1.1
+- [ ] Substituir o render do kit na home e as entradas IMGDATA com correspondência inequívoca; preservar todo o restante do HTML e não publicar.
+- [ ] Atualizar o hash de integridade, executar testes e conferir as imagens no preview; listar chaves sem correspondente e arquivos sem chave própria.
