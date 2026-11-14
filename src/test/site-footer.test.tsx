@@ -22,7 +22,7 @@ describe("Site footer", () => {
   it("offers the brandbook as a discreet PDF download in ultramar-claro", () => {
     render(<SiteFooter />);
     const link = screen.getByRole("link", {
-      name: "Baixar o brandbook e design system da Arquê (PDF, 22 páginas)",
+      name: "Baixar o brandbook e design system da Arquê (PDF, 30 páginas)",
     });
     expect(link).toHaveAttribute("href", PDF_HREF);
     expect(link).toHaveAttribute("download", "arque-brandbook-design-system.pdf");
@@ -59,13 +59,13 @@ describe("Site footer", () => {
     expect(screen.getByRole("link", { name: "Área do cliente" })).toHaveAttribute("href", "/area-do-cliente");
   });
 
-  it("serves a real 22-page PDF from the project's static downloads", () => {
+  it("serves a real 30-page PDF from the project's static downloads", () => {
     const file = path.join(process.cwd(), "public", "downloads", "arque-brandbook-design-system.pdf");
     expect(existsSync(file)).toBe(true);
     const bytes = readFileSync(file);
     expect(bytes.subarray(0, 5).toString()).toBe("%PDF-");
     expect(bytes.length).toBeGreaterThan(400_000);
-    expect(bytes.toString("latin1")).toContain("/Count 22");
+    expect(bytes.toString("latin1")).toContain("/Count 30");
   });
 
   it("serves a real 31-page slides PDF from the project's static downloads", () => {

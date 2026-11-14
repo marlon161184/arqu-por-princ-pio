@@ -6,7 +6,7 @@
 # Identidade visual v1.1
 - [x] Aplicar os paths oficiais, símbolo circunflexo, versões ópticas e favicon sem alterar cores ou layout.
 - [x] Migrar SVGs inline do Enxoval e conferir domínio oficial; 30 testes passaram e a marca foi verificada em 1440/390px.
-- [ ] Receber og-image.jpg e apple-touch-icon.png do time; sem placeholders.
+- [x] Receber e aplicar og-image.jpg (1200×630) e apple-touch-icon.png (180×180) oficiais; sem placeholders.
 
 # Conceito · Área do cliente
 - [x] Criar página própria e protótipo local com cinco telas e filtros.
@@ -75,4 +75,12 @@
 - [x] Substituir somente o base64 das 23 chaves IMGDATA pelos WebP de mesmo nome; manter as outras 24 entradas e todo o HTML externo ao objeto byte a byte, sem publicar.
 - [x] Atualizar o hash SHA-256 de integridade para `604e2a335e4b9b99c885e6014c02483092a53f6db06d466fdf95d6a32b46188b`.
 - [x] Conferir 35 testes, as 23 imagens byte a byte no preview e ausência de imagens quebradas; auditar identidade e downloads sem alterá-los.
-- [ ] Receber PDFs atualizados: o brandbook ainda é 1.0 e os slides mantêm o monograma antigo, renders anteriores e domínio provisório; arquivos preservados nesta auditoria.
+- [x] Receber e substituir o brandbook pelo PDF v1.1 de 30 páginas, byte a byte.
+- [ ] Receber slides atualizados: mantêm o monograma antigo, renders anteriores e domínio provisório; aguardando arquivo do time, preservado nesta atualização.
+
+# Pendências da auditoria · Assets v1.1
+- [x] Copiar imagens oficiais para public/ e substituir o brandbook no caminho existente; atualizar a indicação acessível para 30 páginas.
+- [x] Configurar og:image e twitter:image na home, com domínio oficial e dimensões 1200×630; manter tags de imagem fora da raiz para não afetar outras páginas.
+- [x] Alterar apenas a abertura do Clubinho; preservar IMGDATA, artes e exports.
+- [x] Atualizar integridade do Enxoval: `2ef09363f5322de9d3c4ab929293e930092d93d8757a7a33cf86f016c6191225`.
+- [x] Conferir 35 testes, imagens e tags no preview, download do PDF byte a byte e alteração única no texto do HTML; sem publicar.
