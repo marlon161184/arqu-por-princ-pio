@@ -91,3 +91,8 @@
 - [x] Ampliar timbrado, envelope, duas frentes do cartão, frente do crachá, quatro fichas e três aplicações nas cartas para 10mm; recentralizar símbolos do verso do crachá e da placa para evitar cortes após corrigir a proporção.
 - [x] Exceção: gravação de canetas/lápis ampliada de ~7,5mm para 9mm (21,69mm de largura), deixando margem de 0,5mm no diâmetro de 10mm; demais wordmarks físicos atingem 10mm ou mais.
 - [x] Integridade SHA-256 `35aa91369e0d9caa2babf8ba56a25d91312c028e7b7ceb3665560af786d9da58`; verificação 375/1280px, imagens byte a byte, artes e download real do ZIP do cartão; sem publicar.
+
+# Renders do Enxoval · v1.1 · Lote 4
+- [x] Substituir somente o base64 das cinco chaves IMGDATA destaque e cracha_estrategia/marcas/negocios/pessoas pelos WebP de mesmo nome; manter as outras 42 entradas e todo o HTML externo ao objeto byte a byte, sem publicar.
+- [x] Substituir a foto do fundador via lovable-assets por marlon-fundador.webp (1087×1446, wordmark do moletom mais estreito), mantendo o mecanismo .asset.json e os atributos width/height.
+- [x] Atualizar o hash SHA-256 de integridade para `8a2ebbab3df1603b1a7c062c27abf413d5f4a4ffbd25431eeb3fadf401927945`; rodar os testes; sem publicar.
