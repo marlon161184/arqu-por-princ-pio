@@ -138,12 +138,12 @@ describe("Seção 05 Produtos", () => {
       expect(logo).toHaveAttribute("src", expect.stringContaining("hyndra-logo-branco.png"));
       expect(logo).toHaveAttribute("height", "64");
     }
-    expect(clientes.map((grupo) => [grupo.id, grupo.itens.length])).toEqual([["hyndra-e-newe", 7], ["hyndra", 1], ["newe", 4]]);
+    expect(clientes.map((grupo) => [grupo.id, grupo.itens.length])).toEqual([["hyndra-e-newe", 7], ["hyndra", 1], ["newe", 5]]);
   });
 
-  it("opens all twelve client items with their unchanged full descriptions", () => {
+  it("opens all thirteen client items with their full descriptions", () => {
     render(<DigitalProducts />);
-    expect(clientes.flatMap((grupo) => grupo.itens).map((item) => item.num)).toEqual(["A.1", "A.2", "A.3", "A.4", "A.5", "A.6", "A.7", "B.1", "C.1", "C.2", "C.3", "C.4"]);
+    expect(clientes.flatMap((grupo) => grupo.itens).map((item) => item.num)).toEqual(["A.1", "A.2", "A.3", "A.4", "A.5", "A.6", "A.7", "B.1", "C.1", "C.2", "C.3", "C.4", "C.5"]);
     for (const grupo of clientes) for (const item of grupo.itens) {
       const row = within(screen.getByRole("list", { name: `Produtos de ${grupo.nome}` })).getByRole("button", { name: `${item.num} ${item.nome}` });
       row.focus();
@@ -157,6 +157,27 @@ describe("Seção 05 Produtos", () => {
       expect(document.activeElement).toBe(row);
     }
     expect(document.body.textContent).not.toMatch(/Chlorum/i);
+  });
+
+  it.each([
+    ["A.1 Nosso Jeito de Ser", "A cultura precisa de um lugar onde ser consultada e praticada.", "Parte do ecossistema NEXUS, em uso na Hyndra e na Newe."],
+    ["A.5 Ciclo de Gente", "Desenvolver pessoas começa por medir competências com método.", "Implantado e em operação."],
+    ["B.1 Hub Hyndra", "Regra que não se encontra não orienta.", "Transferido à Hyndra e mantido por ela, o Hub cresceu além do escopo original."],
+    ["C.5 RADAR arquê", "Reunião de sócios serve para decidir, não para consolidar.", "Cada edição registra as decisões e acompanha a execução."],
+  ])("shows the method details for %s", (name, principio, sustentacao) => {
+    render(<DigitalProducts />);
+    fireEvent.click(screen.getByRole("button", { name }));
+    const dialog = within(screen.getByRole("dialog"));
+    expect(dialog.getByText(principio)).toBeInTheDocument();
+    expect(dialog.getByText(sustentacao)).toBeInTheDocument();
+  });
+
+  it("omits method details when the item has none", () => {
+    render(<DigitalProducts />);
+    fireEvent.click(screen.getByRole("button", { name: "A.2 All Aboard" }));
+    const dialog = within(screen.getByRole("dialog"));
+    expect(dialog.queryByText("Princípio")).not.toBeInTheDocument();
+    expect(dialog.queryByText("Sustentação")).not.toBeInTheDocument();
   });
 
   it("contains keyboard focus and unlocks scrolling after a client contact action", () => {

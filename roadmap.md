@@ -96,3 +96,7 @@
 - [x] Substituir somente o base64 das cinco chaves IMGDATA destaque e cracha_estrategia/marcas/negocios/pessoas pelos WebP de mesmo nome; manter as outras 42 entradas e todo o HTML externo ao objeto byte a byte, sem publicar.
 - [x] Substituir a foto do fundador via lovable-assets por marlon-fundador.webp (1087×1446, wordmark do moletom mais estreito), mantendo o mecanismo .asset.json e os atributos width/height.
 - [x] Atualizar o hash SHA-256 de integridade para `8a2ebbab3df1603b1a7c062c27abf413d5f4a4ffbd25431eeb3fadf401927945`; rodar os testes; sem publicar.
+
+# Clientes · Cases do método
+- [x] Atualizar Nosso Jeito de Ser, Ciclo de Gente e Hub Hyndra e incluir RADAR arquê no grupo Newe.
+- [x] Exibir Princípio e Sustentação na pasta quando informados, sem alterar o layout geral nem publicar.
