@@ -105,3 +105,8 @@
 - [x] Substituir os blocos do hero por cenário estático de pontos, arcos e símbolo tonal, com marcadores quadrados nas listas curtas.
 - [x] Adicionar o manifesto em vídeo como Lovable Asset, sem reprodução automática, com pôster, controles após o clique e transcrição acessível.
 - [x] Verificar testes, contraste, celular e computador, sem publicar.
+
+# Moletom · proporção do render
+- [x] Adicionar object-fit:contain e object-position:center às duas regras img.r3 do enxoval, preservando o fundo concreto do letterbox.
+- [x] Usar width="900" height="1200" nas chaves hoodie_a e hoodie_b em mockHtml, mantendo o contêiner 4:3 do cartão.
+- [x] Atualizar o hash de integridade para `4eb35ce09fc0405f036b32d45985bcddee0b79a64a92f6125a04e80b08a3e9e0`; conferir os dois modelos em 375/1280px e as demais peças, sem publicar.
