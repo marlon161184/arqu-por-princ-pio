@@ -2,10 +2,12 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { SiteHeader } from "@/components/site/SiteHeader";
 import { ContactForm } from "@/components/site/ContactForm";
 import { FounderPortrait } from "@/components/site/FounderPortrait";
+import { HeroBackdrop } from "@/components/site/HeroBackdrop";
+import { ManifestoVideo } from "@/components/site/ManifestoVideo";
 import { Chevron, Label, Reveal } from "@/components/site/primitives";
+import { ArqueSymbol, ArqueWordmark } from "@/components/ArqueWordmark";
 import { DigitalProducts } from "@/components/produtos/DigitalProducts";
 import { SiteFooter } from "@/components/site/SiteFooter";
-import { ArqueWordmark } from "@/components/ArqueWordmark";
 import kitCliente from "@/assets/kitcliente.webp.asset.json";
 import marlonFoto from "@/assets/marlon-fundador.webp.asset.json";
 
@@ -71,10 +73,18 @@ function Index() {
       <SiteHeader />
       <main id="conteudo">
         {/* Hero */}
-        <section aria-labelledby="hero-title" className="bg-surface">
-          <div className="container-x grid-12 gap-y-12 py-16 lg:py-24">
+        <section aria-labelledby="hero-title" className="relative overflow-hidden bg-surface">
+          <HeroBackdrop />
+          <div className="container-x grid-12 relative gap-y-12 py-16 lg:py-24">
             <Reveal className="col-span-12 flex flex-col justify-center lg:col-span-7">
-              <Label>Estratégia · Pessoas · Marcas · Negócios</Label>
+              <ul aria-label="Práticas da Arquê" className="label-mono flex flex-wrap gap-x-5 gap-y-2 text-ink-muted">
+                {praticas.map(([nome]) => (
+                  <li key={nome} className="flex items-center gap-2">
+                    <span aria-hidden="true" className="brand-bullet" />
+                    {nome}
+                  </li>
+                ))}
+              </ul>
               <h1 id="hero-title" className="display-xl mt-8 text-ink">Por princípio.</h1>
               <p className="body-l measure mt-8 text-ink-muted">
                 Consultoria de estratégia, pessoas, marcas e negócios. Atuamos junto às lideranças, do princípio à estrutura e da estrutura aos resultados. Quando a estrutura precisa existir como sistema, a construímos com IA.
@@ -86,16 +96,8 @@ function Index() {
                 </a>
               </div>
             </Reveal>
-            <div className="col-span-12 -mr-[clamp(20px,5vw,80px)] h-[200px] lg:col-span-5 lg:h-auto lg:min-h-[320px] min-[1440px]:mr-[calc((1280px-100vw)/2)]">
-              <svg viewBox="0 0 480 320" preserveAspectRatio="xMaxYMid slice" aria-hidden="true" className="block h-full w-full">
-                <defs><clipPath id="slab"><rect x="0" y="0" width="224" height="320" /></clipPath></defs>
-                <rect fill="var(--ultramar)" x="0" y="0" width="224" height="320" />
-                <rect fill="var(--carvao)" x="224" y="0" width="256" height="160" />
-                <rect fill="var(--ultramar-claro)" x="224" y="160" width="128" height="96" />
-                <rect fill="var(--marfim)" x="352" y="160" width="128" height="160" />
-                <rect fill="var(--grafite)" x="224" y="256" width="128" height="64" />
-                <polyline clipPath="url(#slab)" points="-40,248 112,96 264,248" fill="none" stroke="var(--branco)" strokeWidth="72" strokeLinejoin="miter" strokeMiterlimit="10" />
-              </svg>
+            <div aria-hidden="true" className="hero-object col-span-12 -mr-[clamp(20px,5vw,80px)] h-[200px] lg:col-span-5 lg:h-auto lg:min-h-[320px] min-[1440px]:mr-[calc((1280px-100vw)/2)]">
+              <ArqueSymbol className="hero-symbol" />
             </div>
           </div>
         </section>
@@ -111,6 +113,15 @@ function Index() {
                 <p>Não acreditamos em soluções prontas para realidades complexas. Acreditamos em começar pelo que vem primeiro, e em dar a isso forma: método, estrutura, responsabilidade.</p>
                 <p>Pensamos com profundidade. Construímos com método. Executamos até o fim.</p>
                 <p>Porque transformar não é imaginar o futuro. É dar a ele uma fundação.</p>
+              </div>
+              <div className="grid-12 mt-16 gap-y-8">
+                <div className="col-span-12 self-start lg:col-span-7">
+                  <Label className="text-concreto">Manifesto em vídeo · 62 s</Label>
+                  <p className="mt-4 max-w-[32ch] text-nevoa">Os princípios da Arquê, em 62 segundos.</p>
+                </div>
+                <div className="col-span-12 lg:col-span-4 lg:col-start-9">
+                  <ManifestoVideo />
+                </div>
               </div>
               <Label className="mt-12 text-ultramar-claro">Arquê. Por princípio.</Label>
             </Reveal>
@@ -128,7 +139,10 @@ function Index() {
             <ul className="mt-16 grid grid-cols-1 gap-x-6 gap-y-12 sm:grid-cols-2 lg:grid-cols-4">
               {praticas.map(([t, d], i) => (
                 <li key={t} className="border-t-2 border-carvao pt-6 transition-colors hover:border-ultramar">
-                  <p className="label-mono text-brand">0{i + 1}</p>
+                  <div className="flex items-center gap-3">
+                    <span aria-hidden="true" className="brand-bullet" />
+                    <p className="label-mono text-brand">0{i + 1}</p>
+                  </div>
                   <h3 className="h3-style mt-6 text-ink">{t}</h3>
                   <p className="mt-3 text-ink-muted">{d}</p>
                 </li>

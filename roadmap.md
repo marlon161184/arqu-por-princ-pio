@@ -100,3 +100,8 @@
 # Clientes · Cases do método
 - [x] Atualizar Nosso Jeito de Ser, Ciclo de Gente e Hub Hyndra e incluir RADAR arquê no grupo Newe.
 - [x] Exibir Princípio e Sustentação na pasta quando informados, sem alterar o layout geral nem publicar.
+
+# Mood do manifesto em vídeo
+- [x] Substituir os blocos do hero por cenário estático de pontos, arcos e símbolo tonal, com marcadores quadrados nas listas curtas.
+- [x] Adicionar o manifesto em vídeo como Lovable Asset, sem reprodução automática, com pôster, controles após o clique e transcrição acessível.
+- [x] Verificar testes, contraste, celular e computador, sem publicar.

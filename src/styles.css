@@ -269,6 +269,30 @@
 .cliente-index-btn:hover .index-chev, .cliente-index-btn:focus-visible .index-chev { transform: translateX(var(--motion-step)); }
 @media (max-width: 640px) { .cliente-index-btn .index-name { font-size: 22px; } }
 
+/* Hero e manifesto em vídeo — composição inteiramente estática. */
+.hero-backdrop { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.hero-dots {
+  position: absolute; inset: 0;
+  background-image: radial-gradient(circle, color-mix(in oklab, var(--carvao) 18%, transparent) 1.25px, transparent 1.5px);
+  background-size: 44px 44px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 95% at 100% 0%, var(--carvao) 0%, transparent 72%);
+  mask-image: radial-gradient(ellipse 90% 95% at 100% 0%, var(--carvao) 0%, transparent 72%);
+}
+.hero-arcs { position: absolute; top: 0; right: 0; width: 1000px; max-width: none; color: color-mix(in oklab, var(--carvao) 7%, transparent); }
+.hero-object { position: relative; pointer-events: none; }
+.hero-symbol { position: absolute; right: -35%; bottom: -30%; width: 150%; max-width: none; height: auto; color: color-mix(in oklab, var(--carvao) 12%, transparent); }
+.brand-bullet { display: inline-block; width: 0.26em; height: 0.26em; flex: none; background: var(--ultramar); }
+.manifesto-assistir:focus-visible, .manifesto-video:focus-visible, .manifesto-transcricao summary:focus-visible { outline-color: var(--branco); }
+.manifesto-transcricao summary { list-style: none; }
+.manifesto-transcricao summary::-webkit-details-marker { display: none; }
+.manifesto-transcricao-chevron { transform: rotate(90deg); }
+.manifesto-transcricao[open] .manifesto-transcricao-chevron { transform: rotate(0deg); }
+@media (max-width: 1023px) {
+  .hero-arcs { width: 720px; }
+  .hero-arc-extra { display: none; }
+  .hero-symbol { right: -20%; bottom: -15%; width: 90%; }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .index-row { opacity: 1; transform: none; transition: none; }
   .pasta-panel { animation: none; }
